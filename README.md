@@ -46,3 +46,4 @@
 
 - We will hold our own deadlines according to a set time-line, and we will make sure to meet them. However, in circumstances where a member fails to meet the expectations, a warning will be given. (If the member did not pre-communicate their schedule and ask for accommodation beforehand). Hopefully any issues will be solved through respectful communication among group members. If we are unable to do so, then we will ask the TA or professor for further guidance.
 
+Members: Abheet Kansal, Rehan Mondal

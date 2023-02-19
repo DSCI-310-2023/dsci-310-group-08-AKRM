@@ -30,4 +30,10 @@ from the root directory of this project:
 ### Licenses
 
 Predicting the revenue of the movies based on budget © 2023 by Abheet Kansal, Rehan Mondal is licensed under Attribution 4.0 International. If
-re-using/re-mixing please provide attribution and link to this webpage.
+re-using or re-mixing please provide attribution and link to this webpage.
+
+### Acknowledgement
+
+Mondal, R., Zhang, M., Lu, C., &amp; Leng, J. (2022). Predicting the revenue of the movies based on budget. Retrieved 2023, from https://github.com/rehan13/DSCI-100-Project-Group25.git 
+
+Permission were take from all members of the DSCI 100 group on email by Rehan Mondal for re using this project.

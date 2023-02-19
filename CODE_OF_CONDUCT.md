@@ -23,7 +23,7 @@ Taking appropriate corrective action, such as removing content, banning users, o
 Providing support and guidance to anyone who reports a Code of Conduct violation or who is affected by such a violation.
 
 ### Enforcement
-If you believe that someone has violated the Code of Conduct, please contact one of the project maintainers directly. You can also report a violation by sending an email to [insert email address here]. All reports will be kept confidential and will be investigated promptly.
+If you believe that someone has violated the Code of Conduct, please contact one of the project maintainers directly. You can also report a violation by sending an email to abheetkansal@gmail.com or rehanmondal1312@gmail.com. All reports will be kept confidential and will be investigated promptly.
 
 If a violation is found to have occurred, we will take appropriate corrective action, which may include removing content, banning users, or revoking contributor access. We will always strive to act fairly and impartially, and we will provide support and guidance to anyone who is affected by a violation.
 

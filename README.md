@@ -14,7 +14,10 @@ In the data set “TMDB 5000 Movie Dataset” (from "https://www.kaggle.com/data
 
 ### How to run
 
- - Clone the repo and navigate into the directory in terminal. Then open jupyter lab using the following line of code in the terminal
+ - To replicate the analysis, install
+[Docker](https://www.docker.com/get-started). Then clone this GitHub
+repository and run the following command at the command line/terminal
+from the root directory of this project:
 
 `docker run -it --rm -p 10000:8888 -v "${PWD}":/home/jovyan/work rehan13/dsci-310-group-08-akrm:latest`
 
@@ -26,4 +29,5 @@ In the data set “TMDB 5000 Movie Dataset” (from "https://www.kaggle.com/data
 
 ### Licenses
 
-Predicting the revenue of the movies based on budget © 2023 by Abheet Kansal, Rehan Mondal is licensed under Attribution 4.0 International
+Predicting the revenue of the movies based on budget © 2023 by Abheet Kansal, Rehan Mondal is licensed under Attribution 4.0 International. If
+re-using/re-mixing please provide attribution and link to this webpage.

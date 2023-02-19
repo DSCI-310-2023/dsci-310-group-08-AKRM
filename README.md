@@ -14,7 +14,7 @@ In the data set “TMDB 5000 Movie Dataset” (from "https://www.kaggle.com/data
 
 ### How to run
 
- - Clone the repo. Then open jupyter lab using the following line of code in the terminal
+ - Clone the repo and navigate into the directory in terminal. Then open jupyter lab using the following line of code in the terminal
 
 docker run -it --rm -p 10000:8888 -v "${PWD}":/home/jovyan/work rehan13/dsci-310-group-08-akrm:latest
 

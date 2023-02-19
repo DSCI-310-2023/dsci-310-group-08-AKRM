@@ -22,6 +22,7 @@ bug, create an associated issue and illustrate the bug with a minimal
 
 *  We recommend that you create a Git branch for each pull request (PR).  
 *  New code should follow the tidyverse [style guide](http://style.tidyverse.org) or PEP8 [style guide](https://www.python.org/dev/peps/pep-0008/).
+*  If you'd like to contribute a feature or bug fix, you can fork our repo and submit a pull request. We will review pull requests within 7 days.
 
 ### Code of Conduct
 

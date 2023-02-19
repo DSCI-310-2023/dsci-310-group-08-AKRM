@@ -13,9 +13,17 @@ The question we will try to answer with our project is what is the revenue of a 
 In the data set “TMDB 5000 Movie Dataset” (from "https://www.kaggle.com/datasets/tmdb/tmdb-movie-metadata"), revenues, budget, popularity are recorded for the 5000 movies listed in an excel format. Other columns are listed/included in the data set as well, however because they are written in json or not a significant predictor to the revenue, those columns will be filtered out. Revenues is defined as the total box income of the movie; budget is defined as the funding used for the production; Popularity numbers are built according to the TMDB model which consists of number of votes for the day, number of views for the day, number of users who marked it as a "favourite" for the day, Number of users who added it to their "watchlist" for the day, release date, number of total votes, and previous days score. We will discuss and analyze the correlation of each variable with revenue below.
 
 ### How to run
-Clone the repo. Then open jupyter lab using the following line of code in the terminal
+
+ - Clone the repo. Then open jupyter lab using the following line of code in the terminal
 
 docker run -it --rm -p 10000:8888 -v "${PWD}":/home/jovyan/work rehan13/dsci-310-group-08-akrm:latest
 
-Navigate to the work folder and then open Movie_Revenue_Predictor.ipynb
+- To open jupyter lab on the web browser  http://<hostname>:10000/?token=<token> 
+
+- You can find the token in the terminal (it is generated when the docker run code in executed). The host name should be should be replaced with you computer host name (eg. localhost).
+
+ - Navigate to the work folder and then open Movie_Revenue_Predictor.ipynb
+
 ### Licenses
+
+Predicting the revenue of the movies based on budget © 2023 by Abheet Kansal, Rehan Mondal is licensed under Attribution 4.0 International

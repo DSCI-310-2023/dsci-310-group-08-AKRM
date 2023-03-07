@@ -12,10 +12,14 @@ The project deals with predicting whether movies with high budget have high reve
 
  - To replicate the analysis, install
 [Docker](https://www.docker.com/get-started). Then clone this GitHub
-repository and run the following command at the command line/terminal
+repository and cd into the directory. Then run the following command at the command line/terminal
 from the root directory of this project:
 
-`docker run -it --rm -p 10000:8888 -v "${PWD}":/home/jovyan/work rehan13/dsci-310-group-08-akrm:latest`
+- `docker build --tag rehan13/dsci-310-group-08-akrm .`
+
+Followed by:
+
+- `docker run -it --rm -p 10000:8888 -v "${PWD}":/home/jovyan/work rehan13/dsci-310-group-08-akrm:latest`
 
 - To open jupyter lab on the web browser `http://<hostname>:10000/?token=<token>`
 

@@ -2,11 +2,9 @@
 # Distributed under the terms of the Modified BSD License.
 FROM jupyter/scipy-notebook
 
-LABEL maintainer="Jupyter Project <jupyter@googlegroups.com>"
-
-SHELL ["/bin/bash", "-o", "pipefail", "-c"]
-
+WORKDIR /project
 USER root
+
 
 # R pre-requisites
 RUN apt-get update --yes && \
@@ -36,4 +34,4 @@ RUN mamba install --quiet --yes \
 
 
 
-WORKDIR "${HOME}"
+EXPOSE 8888

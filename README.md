@@ -15,11 +15,11 @@ The project deals with predicting whether movies with high budget have high reve
 repository and cd into the directory. Then run the following command at the command line/terminal
 from the root directory of this project:
 
-- `docker build --tag rehan13/dsci-310-group-08-akrm .`
+- `docker build --tag akrm-env .`
 
 Followed by:
 
-- `docker run -it --rm -p 10000:8888 -v "${PWD}":/home/jovyan/work rehan13/dsci-310-group-08-akrm:latest`
+- `docker run -it --rm -p 10000:8888 -v "${PWD}":/project akrm-env`
 
 - To open jupyter lab on the web browser `http://<hostname>:10000/?token=<token>`
 

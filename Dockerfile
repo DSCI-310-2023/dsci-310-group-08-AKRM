@@ -44,7 +44,7 @@ RUN mamba install --quiet --yes \
     'r-infer' \
     'r-cowplot' \
     # 'rpy2' \
-    # 'unixodbc' && \
+    'unixodbc' && \
     mamba clean --all -f -y && \
     fix-permissions "${CONDA_DIR}" && \
     fix-permissions "/home/${NB_USER}"

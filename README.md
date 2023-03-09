@@ -11,8 +11,8 @@ The project deals with predicting whether movies with high budget have high reve
 ### How to run
 
  - To replicate the analysis, install
-[Docker](https://www.docker.com/get-started). Then clone this GitHub
-repository and cd into the directory. Then run the following command at the command line/terminal
+[Docker](https://www.docker.com/get-started). Then `clone` this GitHub
+repository and `cd` into the directory. Then run the following command at the command line/terminal
 from the root directory of this project:
 
 - `docker build --tag akrm-env .`

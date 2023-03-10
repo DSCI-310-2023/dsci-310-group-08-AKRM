@@ -1,0 +1,11 @@
+{
+    "renv::renv_addins_embed": {
+        "name": "Embed a Lockfile",
+        "package": "renv",
+        "title": "",
+        "description": "Embeds a lockfile in the document, via renv::use().",
+        "interactive": false,
+        "binding": "renv_addins_embed",
+        "ordinal": 1
+    }
+}

@@ -1,0 +1,26 @@
+{
+    "type": [
+        2,
+        2,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        2,
+        3
+    ],
+    "data": [
+        "\nR version 4.2.2 (2022-10-31) -- \"Innocent and Trusting\"\nCopyright (C) 2022 The R Foundation for Statistical Computing\nPlatform: x86_64-pc-linux-gnu (64-bit)\n\nR is free software and comes with ABSOLUTELY NO WARRANTY.\nYou are welcome to redistribute it under certain conditions.\nType 'license()' or 'licence()' for distribution details.\n\n  Natural language support but running in an English locale\n\nR is a collaborative project with many contributors.\nType 'contributors()' for more information and\n'citation()' on how to cite R or R packages in publications.\n\n",
+        "Type 'demo()' for some demos, 'help()' for on-line help, or\n'help.start()' for an HTML browser interface to help.\nType 'q()' to quit R.\n\n",
+        "# Bootstrapping renv 0.16.0 --------------------------------------------------\n",
+        "* Downloading renv 0.16.0 ... ",
+        "OK\n",
+        "* Installing renv 0.16.0 ... ",
+        "Done!\n",
+        "* Successfully installed and loaded renv 0.16.0.\n",
+        "* Project '~/' loaded. [renv 0.16.0]\n",
+        "* The project library is out of sync with the lockfile.\n* Use `renv::restore()` to install packages recorded in the lockfile.\n"
+    ]
+}

@@ -22,10 +22,9 @@ from the root directory of this project:
 - `docker build --tag akrm-env .`
 
 Followed by:
+- `docker run --rm -p 8787:8787 -v "${PWD}":/project -e PASSWORD="apassword" rocker/rstudio:4.1.2`
 
-- `docker run -it --rm -p 10000:8888 -v "${PWD}":/project akrm-env`
-
-- To open jupyter lab on the web browser `http://<hostname>:10000/?token=<token>`
+- To open jupyter lab on the web browser `http://localhost:8787`
 
 - You can find the token in the terminal (it is generated when the docker run code in executed). The host name should be should be replaced with you computer host name (eg. localhost).
 

@@ -22,7 +22,7 @@ from the root directory of this project:
 - `docker build --tag akrm-env .`
 
 Followed by:
-- `docker run --rm -p 8787:8787 -v "${PWD}":/project -e PASSWORD="apassword" rocker/rstudio:4.1.2`
+- `docker run --rm -p 8787:8787 -v "${PWD}":/project -e PASSWORD="apassword" akrm-env`
 
 - To open jupyter lab on the web browser `http://localhost:8787`
 

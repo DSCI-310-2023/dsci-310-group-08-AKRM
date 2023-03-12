@@ -19,13 +19,15 @@ read_dataset <- function(path, dest){
 
 #' Exploratory Data Analysis Function
 #'
-#' This function reads the dataset when a path is entered for the dataset and saves it at the destination entered
+#' This function takes in a dataframe and only selects the columns passed in as selects and filter the columns entered to filtered.
 #'
-#' @param path The path where the dataset is which needs to be stored in the given path
+#' @param data The dataframe which stores the dataset from where the required columns are selected and filtered for EDA
 #'
-#' @param dest The destination where the entered path for the dataset needs to be saved
+#' @param select_cols Enter the columns that need to be selected from the data eg:- c(c("col1", "col2"))
 #' 
-#' @return Returns the dataset as a datframe
+#' @param ... It takes in all the columns that need to be filtered with its filtering technique as seperate arguments eg:- col1 > 1, col2 > 5
+#' 
+#' @return Returns the dataframe after selecting the required columns and filtering them based on the criteria given
 #' 
 
 EDA <- function(data, select_cols, ...) {

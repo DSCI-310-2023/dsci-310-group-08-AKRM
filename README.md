@@ -24,7 +24,7 @@ from the root directory of this project:
 Followed by:
 - `docker run --rm -p 8787:8787 -v "${PWD}":/home/rstudio -e PASSWORD="apassword" akrm-env`
 
-- To open jupyter lab on the web browser `http://localhost:8787`
+- To open Rstudio on the web browser `http://localhost:8787` and enter the username as `rstudio` and password as `apassword` 
 
 - Navigate to the work folder and then open Movie_Revenue_Predictor.ipynb from the Analysis folder
 

@@ -187,7 +187,15 @@ Packages          Version
 - xml2            [* -> 1.3.3]
 - yaml            [* -> 2.3.7]
 - yardstick       [* -> 1.1.0]
-
+- brio            [* -> 1.1.3]
+- desc            [* -> 1.4.2]
+- diffobj         [* -> 0.3.5]
+- pkgload         [* -> 1.3.2]
+- praise          [* -> 1.0.0]
+- rprojroot       [* -> 2.0.3]
+- testthat        [* -> 3.1.7]
+- waldo           [* -> 0.4.0]
+ 
 
 ### Licenses
 

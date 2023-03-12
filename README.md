@@ -29,6 +29,8 @@ Followed by:
 - Navigate to the work folder and then open Movie_Revenue_Predictor.ipynb from the Analysis folder
 
 ### Dependencies
+- Base Image:- rocker/rstudio:4.2.2
+
 Packages          Version
 - DBI             [* -> 1.1.3]
 - DiceDesign      [* -> 1.9]

@@ -2,8 +2,8 @@ source("R/EDA.R")
 
 
 
-x <- read_dataset("https://raw.githubusercontent.com/abheetkansal/Dataset/main/crimedata_csv_AllNeighbourhoods_2022.csv", "functions/tests/test_Dataset.csv")
-y <- read.csv("functions/tests/test_comparison.csv")
+x <- read_dataset("https://raw.githubusercontent.com/abheetkansal/Dataset/main/crimedata_csv_AllNeighbourhoods_2022.csv", "R/tests/test_Dataset.csv")
+y <- read.csv("R/tests/test_comparison.csv")
 z <- EDA(y, c("YEAR", "MONTH", "HOUR"), "YEAR" > 0 & "X" > 0)
 
 testthat::expect_equal(x,y)

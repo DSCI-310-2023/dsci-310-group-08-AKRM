@@ -401,42 +401,109 @@ for statistical and modeling analysis. GGally extends ggplot2 by adding
 several functions to reduce the complexity of combining geoms with
 transformed data. cowplot is used to generate the function plot-grid to
 easily compare plots.</p>
-<pre class="r"><code>data &lt;- read_csv(&quot;data/dataset.csv&quot;)</code></pre>
-<pre><code>## Rows: 4803 Columns: 20
-## ── Column specification ────────────────────────────────────────────────────────
-## Delimiter: &quot;,&quot;
-## chr  (12): genres, homepage, keywords, original_language, original_title, ov...
-## dbl   (7): budget, id, popularity, revenue, runtime, vote_average, vote_count
-## date  (1): release_date
-## 
-## ℹ Use `spec()` to retrieve the full column specification for this data.
-## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<pre class="r"><code>head(data)</code></pre>
-<pre><code>## # A tibble: 6 × 20
-##     budget genres homep…¹     id keywo…² origi…³ origi…⁴ overv…⁵ popul…⁶ produ…⁷
-##      &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;    &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;     &lt;dbl&gt; &lt;chr&gt;  
-## 1   2.37e8 &quot;[{\&quot;… http:/…  19995 &quot;[{\&quot;i… en      Avatar  In the…   150.  &quot;[{\&quot;n…
-## 2   3   e8 &quot;[{\&quot;… http:/…    285 &quot;[{\&quot;i… en      Pirate… Captai…   139.  &quot;[{\&quot;n…
-## 3   2.45e8 &quot;[{\&quot;… http:/… 206647 &quot;[{\&quot;i… en      Spectre A cryp…   107.  &quot;[{\&quot;n…
-## 4   2.5 e8 &quot;[{\&quot;… http:/…  49026 &quot;[{\&quot;i… en      The Da… Follow…   112.  &quot;[{\&quot;n…
-## 5   2.6 e8 &quot;[{\&quot;… http:/…  49529 &quot;[{\&quot;i… en      John C… John C…    43.9 &quot;[{\&quot;n…
-## 6   2.58e8 &quot;[{\&quot;… http:/…    559 &quot;[{\&quot;i… en      Spider… The se…   116.  &quot;[{\&quot;n…
-## # … with 10 more variables: production_countries &lt;chr&gt;, release_date &lt;date&gt;,
-## #   revenue &lt;dbl&gt;, runtime &lt;dbl&gt;, spoken_languages &lt;chr&gt;, status &lt;chr&gt;,
-## #   tagline &lt;chr&gt;, title &lt;chr&gt;, vote_average &lt;dbl&gt;, vote_count &lt;dbl&gt;, and
-## #   abbreviated variable names ¹​homepage, ²​keywords, ³​original_language,
-## #   ⁴​original_title, ⁵​overview, ⁶​popularity, ⁷​production_companies</code></pre>
+<pre class="r"><code>data &lt;- read_dataset(&quot;https://raw.githubusercontent.com/rehan13/Movie-Revenue-Predictor/main/tmdb_5000_movies.csv&quot;,&quot;data/dataset.csv&quot;)
+
+head(data)</code></pre>
+<pre><code>##      budget
+## 1 237000000
+## 2 300000000
+## 3 245000000
+## 4 250000000
+## 5 260000000
+## 6 258000000
+##                                                                                                                                   genres
+## 1 [{&quot;id&quot;: 28, &quot;name&quot;: &quot;Action&quot;}, {&quot;id&quot;: 12, &quot;name&quot;: &quot;Adventure&quot;}, {&quot;id&quot;: 14, &quot;name&quot;: &quot;Fantasy&quot;}, {&quot;id&quot;: 878, &quot;name&quot;: &quot;Science Fiction&quot;}]
+## 2                                         [{&quot;id&quot;: 12, &quot;name&quot;: &quot;Adventure&quot;}, {&quot;id&quot;: 14, &quot;name&quot;: &quot;Fantasy&quot;}, {&quot;id&quot;: 28, &quot;name&quot;: &quot;Action&quot;}]
+## 3                                           [{&quot;id&quot;: 28, &quot;name&quot;: &quot;Action&quot;}, {&quot;id&quot;: 12, &quot;name&quot;: &quot;Adventure&quot;}, {&quot;id&quot;: 80, &quot;name&quot;: &quot;Crime&quot;}]
+## 4               [{&quot;id&quot;: 28, &quot;name&quot;: &quot;Action&quot;}, {&quot;id&quot;: 80, &quot;name&quot;: &quot;Crime&quot;}, {&quot;id&quot;: 18, &quot;name&quot;: &quot;Drama&quot;}, {&quot;id&quot;: 53, &quot;name&quot;: &quot;Thriller&quot;}]
+## 5                                [{&quot;id&quot;: 28, &quot;name&quot;: &quot;Action&quot;}, {&quot;id&quot;: 12, &quot;name&quot;: &quot;Adventure&quot;}, {&quot;id&quot;: 878, &quot;name&quot;: &quot;Science Fiction&quot;}]
+## 6                                         [{&quot;id&quot;: 14, &quot;name&quot;: &quot;Fantasy&quot;}, {&quot;id&quot;: 28, &quot;name&quot;: &quot;Action&quot;}, {&quot;id&quot;: 12, &quot;name&quot;: &quot;Adventure&quot;}]
+##                                          homepage     id
+## 1                     http://www.avatarmovie.com/  19995
+## 2    http://disney.go.com/disneypictures/pirates/    285
+## 3     http://www.sonypictures.com/movies/spectre/ 206647
+## 4              http://www.thedarkknightrises.com/  49026
+## 5            http://movies.disney.com/john-carter  49529
+## 6 http://www.sonypictures.com/movies/spider-man3/    559
+##                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      keywords
+## 1                             [{&quot;id&quot;: 1463, &quot;name&quot;: &quot;culture clash&quot;}, {&quot;id&quot;: 2964, &quot;name&quot;: &quot;future&quot;}, {&quot;id&quot;: 3386, &quot;name&quot;: &quot;space war&quot;}, {&quot;id&quot;: 3388, &quot;name&quot;: &quot;space colony&quot;}, {&quot;id&quot;: 3679, &quot;name&quot;: &quot;society&quot;}, {&quot;id&quot;: 3801, &quot;name&quot;: &quot;space travel&quot;}, {&quot;id&quot;: 9685, &quot;name&quot;: &quot;futuristic&quot;}, {&quot;id&quot;: 9840, &quot;name&quot;: &quot;romance&quot;}, {&quot;id&quot;: 9882, &quot;name&quot;: &quot;space&quot;}, {&quot;id&quot;: 9951, &quot;name&quot;: &quot;alien&quot;}, {&quot;id&quot;: 10148, &quot;name&quot;: &quot;tribe&quot;}, {&quot;id&quot;: 10158, &quot;name&quot;: &quot;alien planet&quot;}, {&quot;id&quot;: 10987, &quot;name&quot;: &quot;cgi&quot;}, {&quot;id&quot;: 11399, &quot;name&quot;: &quot;marine&quot;}, {&quot;id&quot;: 13065, &quot;name&quot;: &quot;soldier&quot;}, {&quot;id&quot;: 14643, &quot;name&quot;: &quot;battle&quot;}, {&quot;id&quot;: 14720, &quot;name&quot;: &quot;love affair&quot;}, {&quot;id&quot;: 165431, &quot;name&quot;: &quot;anti war&quot;}, {&quot;id&quot;: 193554, &quot;name&quot;: &quot;power relations&quot;}, {&quot;id&quot;: 206690, &quot;name&quot;: &quot;mind and soul&quot;}, {&quot;id&quot;: 209714, &quot;name&quot;: &quot;3d&quot;}]
+## 2                                                                                                                                                                              [{&quot;id&quot;: 270, &quot;name&quot;: &quot;ocean&quot;}, {&quot;id&quot;: 726, &quot;name&quot;: &quot;drug abuse&quot;}, {&quot;id&quot;: 911, &quot;name&quot;: &quot;exotic island&quot;}, {&quot;id&quot;: 1319, &quot;name&quot;: &quot;east india trading company&quot;}, {&quot;id&quot;: 2038, &quot;name&quot;: &quot;love of one&#39;s life&quot;}, {&quot;id&quot;: 2052, &quot;name&quot;: &quot;traitor&quot;}, {&quot;id&quot;: 2580, &quot;name&quot;: &quot;shipwreck&quot;}, {&quot;id&quot;: 2660, &quot;name&quot;: &quot;strong woman&quot;}, {&quot;id&quot;: 3799, &quot;name&quot;: &quot;ship&quot;}, {&quot;id&quot;: 5740, &quot;name&quot;: &quot;alliance&quot;}, {&quot;id&quot;: 5941, &quot;name&quot;: &quot;calypso&quot;}, {&quot;id&quot;: 6155, &quot;name&quot;: &quot;afterlife&quot;}, {&quot;id&quot;: 6211, &quot;name&quot;: &quot;fighter&quot;}, {&quot;id&quot;: 12988, &quot;name&quot;: &quot;pirate&quot;}, {&quot;id&quot;: 157186, &quot;name&quot;: &quot;swashbuckler&quot;}, {&quot;id&quot;: 179430, &quot;name&quot;: &quot;aftercreditsstinger&quot;}]
+## 3                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         [{&quot;id&quot;: 470, &quot;name&quot;: &quot;spy&quot;}, {&quot;id&quot;: 818, &quot;name&quot;: &quot;based on novel&quot;}, {&quot;id&quot;: 4289, &quot;name&quot;: &quot;secret agent&quot;}, {&quot;id&quot;: 9663, &quot;name&quot;: &quot;sequel&quot;}, {&quot;id&quot;: 14555, &quot;name&quot;: &quot;mi6&quot;}, {&quot;id&quot;: 156095, &quot;name&quot;: &quot;british secret service&quot;}, {&quot;id&quot;: 158431, &quot;name&quot;: &quot;united kingdom&quot;}]
+## 4 [{&quot;id&quot;: 849, &quot;name&quot;: &quot;dc comics&quot;}, {&quot;id&quot;: 853, &quot;name&quot;: &quot;crime fighter&quot;}, {&quot;id&quot;: 949, &quot;name&quot;: &quot;terrorist&quot;}, {&quot;id&quot;: 1308, &quot;name&quot;: &quot;secret identity&quot;}, {&quot;id&quot;: 1437, &quot;name&quot;: &quot;burglar&quot;}, {&quot;id&quot;: 3051, &quot;name&quot;: &quot;hostage drama&quot;}, {&quot;id&quot;: 3562, &quot;name&quot;: &quot;time bomb&quot;}, {&quot;id&quot;: 6969, &quot;name&quot;: &quot;gotham city&quot;}, {&quot;id&quot;: 7002, &quot;name&quot;: &quot;vigilante&quot;}, {&quot;id&quot;: 9665, &quot;name&quot;: &quot;cover-up&quot;}, {&quot;id&quot;: 9715, &quot;name&quot;: &quot;superhero&quot;}, {&quot;id&quot;: 9990, &quot;name&quot;: &quot;villainess&quot;}, {&quot;id&quot;: 10044, &quot;name&quot;: &quot;tragic hero&quot;}, {&quot;id&quot;: 13015, &quot;name&quot;: &quot;terrorism&quot;}, {&quot;id&quot;: 14796, &quot;name&quot;: &quot;destruction&quot;}, {&quot;id&quot;: 18933, &quot;name&quot;: &quot;catwoman&quot;}, {&quot;id&quot;: 156082, &quot;name&quot;: &quot;cat burglar&quot;}, {&quot;id&quot;: 156395, &quot;name&quot;: &quot;imax&quot;}, {&quot;id&quot;: 173272, &quot;name&quot;: &quot;flood&quot;}, {&quot;id&quot;: 179093, &quot;name&quot;: &quot;criminal underworld&quot;}, {&quot;id&quot;: 230775, &quot;name&quot;: &quot;batman&quot;}]
+## 5                                                                                                                                                                   [{&quot;id&quot;: 818, &quot;name&quot;: &quot;based on novel&quot;}, {&quot;id&quot;: 839, &quot;name&quot;: &quot;mars&quot;}, {&quot;id&quot;: 1456, &quot;name&quot;: &quot;medallion&quot;}, {&quot;id&quot;: 3801, &quot;name&quot;: &quot;space travel&quot;}, {&quot;id&quot;: 7376, &quot;name&quot;: &quot;princess&quot;}, {&quot;id&quot;: 9951, &quot;name&quot;: &quot;alien&quot;}, {&quot;id&quot;: 10028, &quot;name&quot;: &quot;steampunk&quot;}, {&quot;id&quot;: 10539, &quot;name&quot;: &quot;martian&quot;}, {&quot;id&quot;: 10685, &quot;name&quot;: &quot;escape&quot;}, {&quot;id&quot;: 161511, &quot;name&quot;: &quot;edgar rice burroughs&quot;}, {&quot;id&quot;: 163252, &quot;name&quot;: &quot;alien race&quot;}, {&quot;id&quot;: 179102, &quot;name&quot;: &quot;superhuman strength&quot;}, {&quot;id&quot;: 190320, &quot;name&quot;: &quot;mars civilization&quot;}, {&quot;id&quot;: 195446, &quot;name&quot;: &quot;sword and planet&quot;}, {&quot;id&quot;: 207928, &quot;name&quot;: &quot;19th century&quot;}, {&quot;id&quot;: 209714, &quot;name&quot;: &quot;3d&quot;}]
+## 6                                                                                                                                                                                                        [{&quot;id&quot;: 851, &quot;name&quot;: &quot;dual identity&quot;}, {&quot;id&quot;: 1453, &quot;name&quot;: &quot;amnesia&quot;}, {&quot;id&quot;: 1965, &quot;name&quot;: &quot;sandstorm&quot;}, {&quot;id&quot;: 2038, &quot;name&quot;: &quot;love of one&#39;s life&quot;}, {&quot;id&quot;: 3446, &quot;name&quot;: &quot;forgiveness&quot;}, {&quot;id&quot;: 3986, &quot;name&quot;: &quot;spider&quot;}, {&quot;id&quot;: 4391, &quot;name&quot;: &quot;wretch&quot;}, {&quot;id&quot;: 4959, &quot;name&quot;: &quot;death of a friend&quot;}, {&quot;id&quot;: 5776, &quot;name&quot;: &quot;egomania&quot;}, {&quot;id&quot;: 5789, &quot;name&quot;: &quot;sand&quot;}, {&quot;id&quot;: 5857, &quot;name&quot;: &quot;narcism&quot;}, {&quot;id&quot;: 6062, &quot;name&quot;: &quot;hostility&quot;}, {&quot;id&quot;: 8828, &quot;name&quot;: &quot;marvel comic&quot;}, {&quot;id&quot;: 9663, &quot;name&quot;: &quot;sequel&quot;}, {&quot;id&quot;: 9715, &quot;name&quot;: &quot;superhero&quot;}, {&quot;id&quot;: 9748, &quot;name&quot;: &quot;revenge&quot;}]
+##   original_language                           original_title
+## 1                en                                   Avatar
+## 2                en Pirates of the Caribbean: At World&#39;s End
+## 3                en                                  Spectre
+## 4                en                    The Dark Knight Rises
+## 5                en                              John Carter
+## 6                en                             Spider-Man 3
+##                                                                                                                                                                                                                                                                                                                                                                                                                                       overview
+## 1                                                                                                                                                                                                                                                              In the 22nd century, a paraplegic Marine is dispatched to the moon Pandora on a unique mission, but becomes torn between following orders and protecting an alien civilization.
+## 2                                                                                                                                                                                                                                                             Captain Barbossa, long believed to be dead, has come back to life and is headed to the edge of the Earth with Will Turner and Elizabeth Swann. But nothing is quite as it seems.
+## 3                                                                                                                                                                                             A cryptic message from Bond’s past sends him on a trail to uncover a sinister organization. While M battles political forces to keep the secret service alive, Bond peels back the layers of deceit to reveal the terrible truth behind SPECTRE.
+## 4 Following the death of District Attorney Harvey Dent, Batman assumes responsibility for Dent&#39;s crimes to protect the late attorney&#39;s reputation and is subsequently hunted by the Gotham City Police Department. Eight years later, Batman encounters the mysterious Selina Kyle and the villainous Bane, a new terrorist leader who overwhelms Gotham&#39;s finest. The Dark Knight resurfaces to protect a city that has branded him an enemy.
+## 5                                                                                       John Carter is a war-weary, former military captain who&#39;s inexplicably transported to the mysterious and exotic planet of Barsoom (Mars) and reluctantly becomes embroiled in an epic conflict. It&#39;s a world on the brink of collapse, and Carter rediscovers his humanity when he realizes the survival of Barsoom and its people rests in his hands.
+## 6                                                                                                                                              The seemingly invincible Spider-Man goes up against an all-new crop of villain – including the shape-shifting Sandman. While Spider-Man’s superpowers are altered by an alien organism, his alter ego, Peter Parker, deals with nemesis Eddie Brock and also gets caught up in a love triangle.
+##   popularity
+## 1  150.43758
+## 2  139.08262
+## 3  107.37679
+## 4  112.31295
+## 5   43.92699
+## 6  115.69981
+##                                                                                                                                                                                          production_companies
+## 1 [{&quot;name&quot;: &quot;Ingenious Film Partners&quot;, &quot;id&quot;: 289}, {&quot;name&quot;: &quot;Twentieth Century Fox Film Corporation&quot;, &quot;id&quot;: 306}, {&quot;name&quot;: &quot;Dune Entertainment&quot;, &quot;id&quot;: 444}, {&quot;name&quot;: &quot;Lightstorm Entertainment&quot;, &quot;id&quot;: 574}]
+## 2                                                               [{&quot;name&quot;: &quot;Walt Disney Pictures&quot;, &quot;id&quot;: 2}, {&quot;name&quot;: &quot;Jerry Bruckheimer Films&quot;, &quot;id&quot;: 130}, {&quot;name&quot;: &quot;Second Mate Productions&quot;, &quot;id&quot;: 19936}]
+## 3                                                                                                     [{&quot;name&quot;: &quot;Columbia Pictures&quot;, &quot;id&quot;: 5}, {&quot;name&quot;: &quot;Danjaq&quot;, &quot;id&quot;: 10761}, {&quot;name&quot;: &quot;B24&quot;, &quot;id&quot;: 69434}]
+## 4                                                [{&quot;name&quot;: &quot;Legendary Pictures&quot;, &quot;id&quot;: 923}, {&quot;name&quot;: &quot;Warner Bros.&quot;, &quot;id&quot;: 6194}, {&quot;name&quot;: &quot;DC Entertainment&quot;, &quot;id&quot;: 9993}, {&quot;name&quot;: &quot;Syncopy&quot;, &quot;id&quot;: 9996}]
+## 5                                                                                                                                                                 [{&quot;name&quot;: &quot;Walt Disney Pictures&quot;, &quot;id&quot;: 2}]
+## 6                                                                      [{&quot;name&quot;: &quot;Columbia Pictures&quot;, &quot;id&quot;: 5}, {&quot;name&quot;: &quot;Laura Ziskin Productions&quot;, &quot;id&quot;: 326}, {&quot;name&quot;: &quot;Marvel Enterprises&quot;, &quot;id&quot;: 19551}]
+##                                                                                         production_countries
+## 1 [{&quot;iso_3166_1&quot;: &quot;US&quot;, &quot;name&quot;: &quot;United States of America&quot;}, {&quot;iso_3166_1&quot;: &quot;GB&quot;, &quot;name&quot;: &quot;United Kingdom&quot;}]
+## 2                                                 [{&quot;iso_3166_1&quot;: &quot;US&quot;, &quot;name&quot;: &quot;United States of America&quot;}]
+## 3 [{&quot;iso_3166_1&quot;: &quot;GB&quot;, &quot;name&quot;: &quot;United Kingdom&quot;}, {&quot;iso_3166_1&quot;: &quot;US&quot;, &quot;name&quot;: &quot;United States of America&quot;}]
+## 4                                                 [{&quot;iso_3166_1&quot;: &quot;US&quot;, &quot;name&quot;: &quot;United States of America&quot;}]
+## 5                                                 [{&quot;iso_3166_1&quot;: &quot;US&quot;, &quot;name&quot;: &quot;United States of America&quot;}]
+## 6                                                 [{&quot;iso_3166_1&quot;: &quot;US&quot;, &quot;name&quot;: &quot;United States of America&quot;}]
+##   release_date    revenue runtime
+## 1   2009-12-10 2787965087     162
+## 2   2007-05-19  961000000     169
+## 3   2015-10-26  880674609     148
+## 4   2012-07-16 1084939099     165
+## 5   2012-03-07  284139100     132
+## 6   2007-05-01  890871626     139
+##                                                                                                                                                                                                         spoken_languages
+## 1                                                                                                                                 [{&quot;iso_639_1&quot;: &quot;en&quot;, &quot;name&quot;: &quot;English&quot;}, {&quot;iso_639_1&quot;: &quot;es&quot;, &quot;name&quot;: &quot;Espa\\u00f1ol&quot;}]
+## 2                                                                                                                                                                               [{&quot;iso_639_1&quot;: &quot;en&quot;, &quot;name&quot;: &quot;English&quot;}]
+## 3 [{&quot;iso_639_1&quot;: &quot;fr&quot;, &quot;name&quot;: &quot;Fran\\u00e7ais&quot;}, {&quot;iso_639_1&quot;: &quot;en&quot;, &quot;name&quot;: &quot;English&quot;}, {&quot;iso_639_1&quot;: &quot;es&quot;, &quot;name&quot;: &quot;Espa\\u00f1ol&quot;}, {&quot;iso_639_1&quot;: &quot;it&quot;, &quot;name&quot;: &quot;Italiano&quot;}, {&quot;iso_639_1&quot;: &quot;de&quot;, &quot;name&quot;: &quot;Deutsch&quot;}]
+## 4                                                                                                                                                                               [{&quot;iso_639_1&quot;: &quot;en&quot;, &quot;name&quot;: &quot;English&quot;}]
+## 5                                                                                                                                                                               [{&quot;iso_639_1&quot;: &quot;en&quot;, &quot;name&quot;: &quot;English&quot;}]
+## 6                                                                                                                                [{&quot;iso_639_1&quot;: &quot;en&quot;, &quot;name&quot;: &quot;English&quot;}, {&quot;iso_639_1&quot;: &quot;fr&quot;, &quot;name&quot;: &quot;Fran\\u00e7ais&quot;}]
+##     status                                        tagline
+## 1 Released                    Enter the World of Pandora.
+## 2 Released At the end of the world, the adventure begins.
+## 3 Released                          A Plan No One Escapes
+## 4 Released                                The Legend Ends
+## 5 Released           Lost in our world, found in another.
+## 6 Released                             The battle within.
+##                                      title vote_average vote_count
+## 1                                   Avatar          7.2      11800
+## 2 Pirates of the Caribbean: At World&#39;s End          6.9       4500
+## 3                                  Spectre          6.3       4466
+## 4                    The Dark Knight Rises          7.6       9106
+## 5                              John Carter          6.1       2124
+## 6                             Spider-Man 3          5.9       3576</code></pre>
 <pre class="r"><code>clean_data &lt;- EDA(data, c(&quot;budget&quot;, &quot;revenue&quot;, &quot;vote_average&quot;, &quot;runtime&quot;, &quot;popularity&quot;), &quot;budget&quot; &gt; 0 &amp; &quot;revenue&quot; &gt; 0)
 head(clean_data)</code></pre>
-<pre><code>## # A tibble: 6 × 5
-##      budget    revenue vote_average runtime popularity
-##       &lt;dbl&gt;      &lt;dbl&gt;        &lt;dbl&gt;   &lt;dbl&gt;      &lt;dbl&gt;
-## 1 237000000 2787965087          7.2     162      150. 
-## 2 300000000  961000000          6.9     169      139. 
-## 3 245000000  880674609          6.3     148      107. 
-## 4 250000000 1084939099          7.6     165      112. 
-## 5 260000000  284139100          6.1     132       43.9
-## 6 258000000  890871626          5.9     139      116.</code></pre>
+<pre><code>##      budget    revenue vote_average runtime popularity
+## 1 237000000 2787965087          7.2     162  150.43758
+## 2 300000000  961000000          6.9     169  139.08262
+## 3 245000000  880674609          6.3     148  107.37679
+## 4 250000000 1084939099          7.6     165  112.31295
+## 5 260000000  284139100          6.1     132   43.92699
+## 6 258000000  890871626          5.9     139  115.69981</code></pre>
 <p>As of now, we have a single giant data frame consisting of all the
 data of TMDB movie. If we pass all of the revenue data into our model,
 we would not have any data to use as a measure of how accurate the model

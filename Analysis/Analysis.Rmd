@@ -39,7 +39,7 @@ We used functions from the tidyverse library to manipulate data frames and tibbl
 
 ```{r}
 
-data <- read_csv("data/dataset.csv")
+data <- read_dataset("https://raw.githubusercontent.com/rehan13/Movie-Revenue-Predictor/main/tmdb_5000_movies.csv","data/dataset.csv")
 
 head(data)
 ```

@@ -26,9 +26,7 @@ Followed by:
 
 - To open jupyter lab on the web browser `http://localhost:8787`
 
-- You can find the token in the terminal (it is generated when the docker run code in executed). The host name should be should be replaced with you computer host name (eg. localhost).
-
- - Navigate to the work folder and then open Movie_Revenue_Predictor.ipynb
+- Navigate to the work folder and then open Movie_Revenue_Predictor.ipynb from the Analysis folder
 
 ### Licenses
 

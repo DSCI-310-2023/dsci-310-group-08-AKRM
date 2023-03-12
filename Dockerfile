@@ -1,4 +1,4 @@
-FROM rocker/rstudio
+FROM rocker/rstudio:4.2.2
 
 WORKDIR /home/rstudio
 

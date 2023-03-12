@@ -18,5 +18,5 @@ scatter_plot = plot_scatter_graph(data=data_test,
 testthat::expect_identical(scatter_plot$labels$y, "Budget")
 testthat::expect_identical(scatter_plot$labels$x, "Revenue")
 testthat::expect_identical(scatter_plot$labels$title, "Plot")
-testthat::expect_error(print(scatter_plot), NA)
+testthat::expect_error(print(scatter_plot), NA) 
 

@@ -26,7 +26,7 @@ Followed by:
 
 - To open Rstudio on the web browser `http://localhost:8787` and enter the username as `rstudio` and password as `apassword` 
 
-- Navigate to the work folder and then open Movie_Revenue_Predictor.ipynb from the Analysis folder
+- Navigate to the Analysis folder and then knit Analysis.Rmd
 
 ### Dependencies
 - Base Image:- rocker/rstudio:4.2.2

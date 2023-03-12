@@ -26,4 +26,4 @@ No warranties are given. The license may not give you all of the permissions nec
 
 Except where otherwise noted, the example programs and other software
 provided in the introduction-to-data-science repository are made available under the
-MIT license.
+license.

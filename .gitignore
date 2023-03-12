@@ -1,5 +1,11 @@
-
 .DS_Store
+.Rhistory
+.Rprofile
 .Rproj.user
-.RHistory
-.ipynp_checkpoints
+.cache
+.config
+.git
+.github
+.gitignore
+.ipynb_checkpoints
+.local

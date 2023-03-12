@@ -28,6 +28,9 @@ Followed by:
 
 - Navigate to the work folder and then open Movie_Revenue_Predictor.ipynb from the Analysis folder
 
+### Dependencies
+
+
 ### Licenses
 
 Predicting the revenue of the movies based on budget © 2023 by Abheet Kansal, Rehan Mondal is licensed under Attribution 4.0 International. If

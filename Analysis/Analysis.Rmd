@@ -16,7 +16,6 @@ library(tidymodels)
 library(GGally)
 library(infer)
 library(cowplot)
-options(repr.matrix.max.rows = 6)
 ```
 
 By - Rehan Mondal and Abheet Kansal Adapted from DSCI 100 Project by - Ming Zhang, Rehan Mondal, Caroline Lu and Jingwen Leng
@@ -69,7 +68,7 @@ revenue_test <- testing(revenue_split)
 revenue_train_diagram <-plot_scatter_graph(data=revenue_train, 
                               plot_width=10, plot_height=10, x_axis_data=budget, 
                               y_axis_data=revenue, x_axis_label="Budget", 
-                              y_axis_label="Revenue",title_lable = "Train Data Plot", text_size=20)
+                              y_axis_label="Revenue",title_label = "Train Data Plot", text_size=20)
 revenue_train_diagram
 ```
 
@@ -148,7 +147,7 @@ revenue_results <- revenue_wkflw %>%
 revenue_results_graph <-plot_scatter_graph(data=revenue_results, 
                               plot_width=10, plot_height=10, x_axis_data=neighbors, 
                               y_axis_data=mean, x_axis_label="K Value", 
-                              y_axis_label="RMSE",title_lable = "Best K value Plot", text_size=20)
+                              y_axis_label="RMSE",title_label = "Best K value Plot", text_size=20)
 
 ```
 

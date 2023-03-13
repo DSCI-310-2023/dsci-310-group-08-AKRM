@@ -15,25 +15,28 @@ In the data set “TMDB 5000 Movie Dataset” (from "https://www.kaggle.com/data
 ### How to run
 
  - To replicate the analysis, install
-[Docker](https://www.docker.com/get-started). Then `clone` this GitHub
-repository and `cd` into the directory. Then run the following command at the command line/terminal
+[Docker](https://www.docker.com/get-started). Then clone this GitHub
+repository and run the following command at the command line/terminal
 from the root directory of this project:
-
 - `docker build --tag akrm-env .`
 
-Followed by:
-- `docker run --rm -p 8787:8787 -v "${PWD}":/home/rstudio -e PASSWORD="apassword" akrm-env`
+- `docker run -it --rm -p 10000:8888 -v "${PWD}":/home/jovyan/work rehan13/dsci-310-group-08-akrm:latest`
 
-- To open Rstudio on the web browser `http://localhost:8787` and enter the username as `rstudio` and password as `apassword` 
+- To open jupyter lab on the web browser `http://<hostname>:10000/?token=<token>`
 
-- Navigate to the Analysis folder and then knit Analysis.Rmd
+- You can find the token in the terminal (it is generated when the docker run code in executed). The host name should be should be replaced with you computer host name (eg. localhost).
+
+- Navigate to the work folder and then open Analysis.ipynb
+
+- To find the Functions and test look into the `R` folder.
+
 
 ### Dependencies
-- Base Image:- rocker/rstudio:4.2.2
+- Base Image:- jupyter/r-notebook:latest
 
 Packages          Version
 - knitr  -> 1.42
-- ggplot2 -> 3.4.1
+- kknn  -> 1.3.1
 - tidyverse  -> 3.1.6
 - dplyr -> 1.1.0
 - GGally  -> 2.1.2
@@ -41,6 +44,8 @@ Packages          Version
 - infer  -> 1.0.4
 - cowplot -> 1.1.1
 - rmarkdown  -> 2.20
+- here -> 1.0.1
+- testthat -> 3.1.6
 
 ### Licenses
 

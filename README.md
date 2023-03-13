@@ -20,7 +20,7 @@ repository and run the following command at the command line/terminal
 from the root directory of this project:
 - `docker build --tag akrm-env .`
 
-- `docker run -it --rm -p 10000:8888 -v "${PWD}":/home/jovyan/work rehan13/dsci-310-group-08-akrm:latest`
+- `docker run -it --rm -p 10000:8888 -v "${PWD}":/home/jovyan/work akrm-env`
 
 - To open jupyter lab on the web browser `http://<hostname>:10000/?token=<token>`
 

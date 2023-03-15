@@ -1,6 +1,7 @@
 library(ggplot2)
+library(here)
 
-source("R/EDA.R")
+source(here("R/eda.R"))
 
 #' Scatter plot function
 #'

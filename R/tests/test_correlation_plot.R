@@ -1,5 +1,5 @@
 # Test for Correlation Plot
-source("R/correlation_plot .R")
+source("R/cp.R")
 library(testthat)
 
 # Creating a dataframe for testing the function

@@ -1,5 +1,5 @@
 # Test for EDA fuction
-source("R/EDA.R")
+source("R/eda.R")
 library(testthat)
 
 # Passing a dataset url to our fuction of read_dataset

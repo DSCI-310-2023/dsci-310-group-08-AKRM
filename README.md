@@ -28,6 +28,9 @@ Followed by:
 
 - Navigate to the Analysis folder and then knit Analysis.Rmd
 
+- In case there is a following complain `Warning: cannot open file 'R/eda.R': No such file or directoryError in file(filename, "r", encoding = encoding) : 
+  cannot open the connection go to `tools` > `global options` > `R Markdown` > and make sure Evaluate chunks in directory is set to `Project`
+
 ### Dependencies
 - Base Image:- rocker/rstudio:4.2.2
 

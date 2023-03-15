@@ -383,7 +383,7 @@ library(tidymodels)</code></pre>
 ## ✖ dplyr::lag()      masks stats::lag()
 ## ✖ yardstick::spec() masks readr::spec()
 ## ✖ recipes::step()   masks stats::step()
-## • Search for functions across packages at https://www.tidymodels.org/find/</code></pre>
+## • Use suppressPackageStartupMessages() to eliminate package startup messages</code></pre>
 <pre class="r"><code>library(GGally)</code></pre>
 <pre><code>## Registered S3 method overwritten by &#39;GGally&#39;:
 ##   method from   
@@ -396,8 +396,6 @@ library(cowplot)</code></pre>
 ## The following object is masked from &#39;package:lubridate&#39;:
 ## 
 ##     stamp</code></pre>
-<pre class="r"><code>here()</code></pre>
-<pre><code>## [1] &quot;/home/rstudio&quot;</code></pre>
 <pre class="r"><code>source(here(&quot;R/eda.R&quot;))
 source(here(&quot;R/cp.R&quot;))
 source(here(&quot;R/grapher.R&quot;))</code></pre>

@@ -32,7 +32,7 @@ Followed by:
   cannot open the connection go to `tools` > `global options` > `R Markdown` > and make sure Evaluate chunks in directory is set to `Project`
 
 ### Dependencies
-- Base Image:- rocker/rstudio:4.2.2
+- Base Image:- rocker/tidyverse:4.2.2
 
 Packages          Version
 - knitr  -> 1.42
@@ -44,6 +44,8 @@ Packages          Version
 - infer  -> 1.0.4
 - cowplot -> 1.1.1
 - rmarkdown  -> 2.20
+- here -> 1.0.1
+- markdown -> 1.5
 
 ### Licenses
 

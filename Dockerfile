@@ -24,6 +24,7 @@ RUN R -e "remotes::install_version('repr', version='1.1.6', repos = 'http://cran
 RUN R -e "remotes::install_version('kknn', '1.3.1', repos = 'http://cran.rstudio.com/')"
 RUN R -e "remotes::install_version('here', version='1.0.1', repos = 'http://cran.rstudio.com/')"
 RUN R -e "remotes::install_version('markdown', version='1.5', repos = 'http://cran.rstudio.com/')"
+RUN R -e "remotes::install_version('bookdown', version='0.33', repos = 'http://cran.rstudio.com/')"
 
 
 EXPOSE 8787

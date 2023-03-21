@@ -1,12 +1,8 @@
 ---
 title: "Predicting the revenue of the movies based on budget"
 output:
-   bookdown::html_document2:
-    toc: true
-    toc_depth: 2
-  bookdown::pdf_document2:
-    toc: true
-    toc_depth: 2
+bookdown::html_document2: default
+bookdown::pdf_document2: default
 ---
 
 ```{r setup, include=FALSE}

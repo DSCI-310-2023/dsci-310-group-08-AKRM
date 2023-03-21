@@ -26,11 +26,11 @@ plot_scatter_graph <- function(data, plot_width, plot_height, x_axis_data,
                                y_axis_data, x_axis_label, y_axis_label, title_label,
                                text_size, psname, path) {
   
-    ggplot(data, aes(x = {{x_axis_data}}, y = {{y_axis_data}})) + 
+    g <- ggplot(data, aes(x = {{x_axis_data}}, y = {{y_axis_data}})) + 
       geom_point() +
       labs(x = x_axis_label, y = y_axis_label, title = title_label ) +
       theme(text = element_text(size=text_size))
-  ggsave(filename = psname, device = "png", path = path, width = plot_width, height = plot_height)
+  ggsave(plot = g, filename = psname, device = "png", path = path, width = plot_width, height = plot_height)
 }
 
 

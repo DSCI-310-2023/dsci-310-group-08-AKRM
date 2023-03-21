@@ -1,8 +1,8 @@
 ---
 title: "Predicting the revenue of the movies based on budget"
 output:
-  bookdown::html_document2: default
-  bookdown::pdf_document2: default
+  html_document: default
+  pdf_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -17,6 +17,7 @@ library(tidymodels)
 library(GGally)
 library(infer)
 library(cowplot)
+library(dplyr)
 ```
 
 
@@ -38,10 +39,13 @@ In the data set "TMDB 5000 Movie Dataset" (from "<https://www.kaggle.com/dataset
 
 We used functions from the tidyverse library to manipulate data frames and tibbles. repr is used to resize plots contained in this notebook, such as an "Accuracy vs K" graph. tidymodels is a package used for statistical and modeling analysis. GGally extends ggplot2 by adding several functions to reduce the complexity of combining geoms with transformed data. cowplot is used to generate the function plot-grid to easily compare plots.
 
+
 ```{r}
-
 data <- read.csv("data/dataset.csv")
+```
 
+
+```{r}
 ```
 
 ```{r}
@@ -59,7 +63,7 @@ To do this, we will use the golden ratio which is a 75-25% ratio of training and
 To make sure that this process is replicable, we use set.seed().
 
 
-```{r }
+```{r, out.width = "50%"}
 
 # Graph for train data
 
@@ -128,9 +132,10 @@ At last, we visualize our prediction using ggplot functions to evaluate if our m
 ```{r}
 # Regression Plot
 knitr::include_graphics("data/revenue_Budget_plot.png")
-
 ```
+
 ## Discussion:
+
 ### Expected outcome
 
 This project centers around studying the profitability of a movie before it is released, predicting revenues based on budget using Knn regression. By analyzing the data set, which consists of 5000 movies from TMDB, a correlation between budget and revenue can be established. According to the market feedback, a larger production (budget) will usually indicate higher qualities of production, indicating a higher revenue. However, as budget exceeds a certain limit, it will reach its total capacity for revenue feedback due to the limited resources of the market. Thus, we hypothesize that a revenue and budget will have a positive correlation, but our model will streamline at a maximum capacity of revenue since that is the limitation of KNN nearest neighbor regression(which lose accuracy beyond the range of the training data).

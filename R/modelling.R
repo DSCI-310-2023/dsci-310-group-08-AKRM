@@ -5,12 +5,26 @@ library(tidymodels)
 library(GGally)
 library(infer)
 library(cowplot)
-source(here("R/reading.R"))
+source(here("R/eda.R"))
 source(here("R/cp.R"))
 source(here("R/grapher.R"))
-source(here("R/preprocessing.R"))
 
 
+
+# download and read raw dataset
+data <- read_dataset("https://raw.githubusercontent.com/rehan13/Movie-Revenue-Predictor/main/tmdb_5000_movies.csv", "data/dataset.csv")
+
+# EDA on the raw data 
+
+clean_data <- EDA(data, "data/clean_dataset.csv", c("budget", "revenue", "vote_average", "runtime", "popularity"), "budget" > 0 & "revenue" > 0)
+
+# Train / Test Data
+set.seed(15)
+
+tt_split(clean_data, "data/train.csv", "data/test.csv")
+
+revenue_train <- read.csv("data/train.csv")
+revenue_test <- read.csv("data/test.csv")
 
 
 # Graph for train data
@@ -52,7 +66,7 @@ revenue_results <- revenue_wkflw %>%
 revenue_results_graph <-plot_scatter_graph(data=revenue_results, 
                                            plot_width=5, plot_height=5, x_axis_data=neighbors, 
                                            y_axis_data=mean, x_axis_label="K Value", 
-                                           y_axis_label="RMSE",title_label = "Best K value Plot", text_size=20, "K-Value_plot.png", "data/")
+                                           y_axis_label="RMSE",title_label = "Best K value Plot", text_size=20, "K-Value_plot.png", "data")
 
 # Exact K value
 revenue_min <- revenue_results %>%

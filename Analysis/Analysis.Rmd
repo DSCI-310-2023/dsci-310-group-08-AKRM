@@ -1,8 +1,8 @@
 ---
 title: "Predicting the revenue of the movies based on budget"
 output:
-bookdown::html_document2: default
-bookdown::pdf_document2: default
+  bookdown::html_document2: default
+  bookdown::pdf_document2: default
 ---
 
 ```{r setup, include=FALSE}
@@ -63,12 +63,12 @@ To do this, we will use the golden ratio which is a 75-25% ratio of training and
 To make sure that this process is replicable, we use set.seed().
 
 
-```{r, out.width = "50%"}
+```{r}
 
 # Graph for train data
 
 
-knitr::include_graphics("data/initial_scatter_plot.png")
+knitr::include_graphics(here::here("data/initial_scatter_plot.png"), rel_path = FALSE)
 
 ```
 
@@ -77,7 +77,7 @@ Below we use ggpairs to analyze the correlation between revenues and the predict
 As we can see, the correlation between budget and revenue is the strongest, and it is also our subject of interest since we are trying to predict revenues based off budget which can directly influence the profit of the investors. All the other predictos have little to no correlation with revenues. Other predictos such as popularity are only relevant or in-existence after the production of the movie which are also not reliable predictors to understand revenue before the investment. For example, Popularity numbers are built according to the TMDB model which consists of number of votes for the day, number of views for the day, number of users who marked it as a "favourite" for the day, Number of users who added it to their "watchlist" for the day, release date, number of total votes, and previous days score (which are only recorded after the movie is produced).
 
 ```{r,out.width="50%"}
- knitr::include_graphics("data/cp.png")
+ knitr::include_graphics(here::here("data/cp.png"), rel_path = FALSE)
 ```
 
 ### Knn-nearest neighbor regression model training
@@ -107,7 +107,7 @@ We then used filter to only list out rmse (which represent $RMSE$: root mean squ
 
 ```{r}
 # Plot K Values
-knitr::include_graphics("data/K-value_plot.png")
+knitr::include_graphics(here::here("data/K-value_plot.png"), rel_path = FALSE)
 ```
 
 Here we can see neighbor $K = 85$ gives us the minimum $RMSE$.
@@ -131,7 +131,7 @@ At last, we visualize our prediction using ggplot functions to evaluate if our m
 
 ```{r}
 # Regression Plot
-knitr::include_graphics("data/revenue_Budget_plot.png")
+knitr::include_graphics(here::here("data/revenue_Budget_plot.png"), rel_path = FALSE)
 ```
 
 ## Discussion:

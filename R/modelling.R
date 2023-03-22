@@ -10,32 +10,9 @@ source(here("R/cp.R"))
 source(here("R/grapher.R"))
 
 
+revenue_train <- read.csv("Results/train.csv")
 
-# download and read raw dataset
-data <- read_dataset("https://raw.githubusercontent.com/rehan13/Movie-Revenue-Predictor/main/tmdb_5000_movies.csv", "data/dataset.csv")
-
-# EDA on the raw data 
-
-clean_data <- EDA(data, "data/clean_dataset.csv", c("budget", "revenue", "vote_average", "runtime", "popularity"), "budget" > 0 & "revenue" > 0)
-
-# Train / Test Data
-set.seed(15)
-
-tt_split(clean_data, "data/train.csv", "data/test.csv")
-
-revenue_train <- read.csv("data/train.csv")
-revenue_test <- read.csv("data/test.csv")
-
-
-# Graph for train data
-
-revenue_train_diagram <-plot_scatter_graph(data=revenue_train, 
-                                           plot_width=10, plot_height=10, x_axis_data=budget, 
-                                           y_axis_data=revenue, x_axis_label="Budget", 
-                                           y_axis_label="Revenue",title_label = "Train Data Plot", text_size=20, psname = "initial_scatter_plot.png", path = "data")
-
-# Generate Correlation Plot
-relationship_revenue <- correlation_plot(data=revenue_train, title="Relationship between each variable", plot_width=15, plot_height=15, cpname = "cp.png", path = "data")
+revenue_test <- read.csv("Results/test.csv")
 
 # Create recipe
 revenue_recipe <- recipe(revenue ~ budget, data = revenue_train)
@@ -62,18 +39,14 @@ revenue_results <- revenue_wkflw %>%
   collect_metrics() %>%
   filter(.metric == "rmse")
 
-# Plot K Values
-revenue_results_graph <-plot_scatter_graph(data=revenue_results, 
-                                           plot_width=5, plot_height=5, x_axis_data=neighbors, 
-                                           y_axis_data=mean, x_axis_label="K Value", 
-                                           y_axis_label="RMSE",title_label = "Best K value Plot", text_size=20, "K-Value_plot.png", "data")
+write.csv(revenue_results, file = "Results/revenue_results.csv")
+
 
 # Exact K value
 revenue_min <- revenue_results %>%
   filter(mean == min(mean))
 
-revenue_min
-write.csv(revenue_min, file = "data/minK.csv")
+write.csv(revenue_min, file = "Results/minK.csv")
 
 # Getting the best fit for the model
 k_min <- revenue_min %>%
@@ -93,21 +66,12 @@ revenue_summary <- revenue_best_fit %>%
   predict(revenue_test) %>%
   bind_cols(revenue_test) %>%
   metrics(truth = revenue, estimate = .pred)
-revenue_summary
-write.csv(revenue_summary, file = "data/revenue_summary.csv")
+write.csv(revenue_summary, file = "Results/revenue_summary.csv")
 
 # Regression Plot
 revenue_preds <- revenue_best_fit %>%
   predict(revenue_train)%>%
   bind_cols(revenue_train)%>%
   select(.pred, revenue, budget)
-revenue_Budget_plot <- ggplot(revenue_preds, aes(x = budget, y = revenue)) +
-  geom_point() +
-  geom_line (data = revenue_preds, mapping = aes (x = budget, y = .pred), color = "red")+
-  xlab ("Budget")+
-  ylab("Revenue")+
-  ggtitle("Relation between Budget and Revenue")+
-  theme(text = element_text(size = 15), plot.title = element_text(hjust = 0.5))
-revenue_Budget_plot
 
-ggsave(filename = "revenue_Budget_plot.png", device = "png", path = "data", width = 5, height = 5)
+write.csv(revenue_preds, file = "Results/revenue_preds.csv")

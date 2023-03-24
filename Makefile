@@ -19,5 +19,5 @@ Analysis/Analysis.html Analysis/Analysis.pdf: Analysis/Analysis.Rmd
 
 # clean
 clean:
-	rm -rf results
+	rm -rf Results
 	rm -rf Analysis/Analysis.html Analysis/Analysis.pdf

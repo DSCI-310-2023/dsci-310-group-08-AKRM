@@ -11,8 +11,6 @@ source(here("R/eda.R"))
 #' visualize and also allows to edit the graphs axis labels and plot dimensions
 #'
 #' @param data The data which should be visualized passed as a dataframe
-#' @param plot_width The width of the plot passed as a numeric value
-#' @param plot_height The height of the plot passed as a numeric value
 #' @param x_axis_data The column name of the passed data which should be displayed on the x axis passed as a dataframe which is the name of the column
 #' @param y_axis_data The column name of the passed data which should be displayed on the y axis passed as a dataframe which is the name of the column
 #' @param x_axis_label Label which will be displayed in the plot for the x axis passed as a string
@@ -22,15 +20,17 @@ source(here("R/eda.R"))
 #' @return The generated plot with the applied parameters
 
 
-plot_scatter_graph <- function(data, plot_width, plot_height, x_axis_data, 
+plot_scatter_graph <- function(data, x_axis_data, 
                                y_axis_data, x_axis_label, y_axis_label, title_label,
-                               text_size, psname, path) {
+                               text_size, path) {
   
     g <- ggplot(data, aes(x = {{x_axis_data}}, y = {{y_axis_data}})) + 
       geom_point() +
       labs(x = x_axis_label, y = y_axis_label, title = title_label ) +
       theme(text = element_text(size=text_size))
-  ggsave(plot = g, filename = psname, device = "png", path = path, width = plot_width, height = plot_height)
+    
+    return(g)
+
 }
 
 

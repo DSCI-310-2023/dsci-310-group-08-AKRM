@@ -1,15 +1,19 @@
 ---
 title: "Predicting the revenue of the movies based on budget"
 output:
-  bookdown::pdf_document2: default
-  bookdown::html_document2: default
+  bookdown::pdf_document2: 
+    toc: true
+    toc_depth: 2
+  bookdown::html_document2: 
+    toc: true
+    toc_depth: 2
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-```{r}
+```{r, echo=FALSE, include=FALSE}
 library(tinytex)
 library(here)
 library(tidyverse)
@@ -41,13 +45,13 @@ In the data set "TMDB 5000 Movie Dataset" (from "<https://www.kaggle.com/dataset
 We used functions from the tidyverse library to manipulate data frames and tibbles. repr is used to resize plots contained in this notebook, such as an "Accuracy vs K" graph. tidymodels is a package used for statistical and modeling analysis. GGally extends ggplot2 by adding several functions to reduce the complexity of combining geoms with transformed data. cowplot is used to generate the function plot-grid to easily compare plots.
 
 
-```{r}
+```{r, echo=FALSE}
 data <- read.csv(here("data/dataset.csv"))
 ```
 
 
-```{r}
-clean_data <- read.csv(here("Results/clean_dataset.csv"))
+```{r, echo=FALSE}
+clean_data <- read.csv(here("Results/clean_data.csv"))
 clean_data <- head(clean_data)
 knitr::kable(clean_data, caption = "TMDB rating")
 ```
@@ -61,7 +65,7 @@ To do this, we will use the golden ratio which is a 75-25% ratio of training and
 To make sure that this process is replicable, we use set.seed().
 
 
-```{r}
+```{r, echo=FALSE}
 
 # Graph for train data
 
@@ -74,7 +78,7 @@ Below we use ggpairs to analyze the correlation between revenues and the predict
 
 As we can see, the correlation between budget and revenue is the strongest, and it is also our subject of interest since we are trying to predict revenues based off budget which can directly influence the profit of the investors. All the other predictors have little to no correlation with revenues. Other predictors such as popularity are only relevant or in-existence after the production of the movie which are also not reliable predictors to understand revenue before the investment. For example, Popularity numbers are built according to the TMDB model which consists of number of votes for the day, number of views for the day, number of users who marked it as a "favourite" for the day, Number of users who added it to their "watchlist" for the day, release date, number of total votes, and previous days score (which are only recorded after the movie is produced).
 
-```{r,out.width="50%"}
+```{r, echo=FALSE}
  knitr::include_graphics(here::here("Results/cp.png"), rel_path = FALSE)
 ```
 
@@ -103,16 +107,16 @@ We can then use the tune_grid function to fit the model for each value in a rang
 
 We then used filter to only list out rmse (which represent $RMSE$: root mean square prediction error) to use to evaluate for the best k value.
 
-```{r}
+```{r, echo=FALSE}
 # Plot K Values
 knitr::include_graphics(here::here("Results/K-value_plot.png"), rel_path = FALSE)
 ```
 
 Here we can see neighbor $K = 85$ gives us the minimum $RMSE$.
 
-```{r}
+```{r, echo=FALSE}
 # Exact K value
-minK <- read.csv(here("Results/minK.csv"))
+minK <- read.csv(here("Results/revenue_min.csv"))
 knitr::kable(minK, caption = "Minimum Value of K")     
 ```
 We assigned the best $K$ to `k_min`, and use the best $K$ value to recreate our model following the same steps as before.
@@ -120,14 +124,14 @@ We assigned the best $K$ to `k_min`, and use the best $K$ value to recreate our 
 
 Finally, we will pass the testing dataset into our final regression model. The model will predict the revenue using the `predict()` function function, and be use `bind_cols` to combine with the revenue_test column for readability. We will compare its predictions with the actual labels.
 
-```{r}
+```{r, echo=FALSE}
 # Summary data
 revenue_summary <- read.csv(here("Results/revenue_summary.csv"))
 knitr::kable(revenue_summary, caption = "Summary data of analysis") 
 ```
 At last, we visualize our prediction using ggplot functions to evaluate if our model is overfitting, underfitting or a good fit for our target.
 
-```{r}
+```{r, echo=FALSE}
 # Regression Plot
 knitr::include_graphics(here::here("Results/revenue_Budget_plot.png"), rel_path = FALSE)
 ```

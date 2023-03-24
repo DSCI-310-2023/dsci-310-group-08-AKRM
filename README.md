@@ -12,7 +12,7 @@ The question we will try to answer with our project is what is the revenue of a 
 
 In the data set “TMDB 5000 Movie Dataset” (from "https://www.kaggle.com/datasets/tmdb/tmdb-movie-metadata"), revenues, budget, popularity are recorded for the 5000 movies listed in an excel format. Other columns are listed/included in the data set as well, however because they are written in json or not a significant predictor to the revenue, those columns will be filtered out. Revenues is defined as the total box income of the movie; budget is defined as the funding used for the production; Popularity numbers are built according to the TMDB model which consists of number of votes for the day, number of views for the day, number of users who marked it as a "favourite" for the day, Number of users who added it to their "watchlist" for the day, release date, number of total votes, and previous days score. We will discuss and analyze the correlation of each variable with revenue below.
 
-### How to run
+### How to run container
 
  - To replicate the analysis, install
 [Docker](https://www.docker.com/get-started). Then `clone` this GitHub
@@ -30,15 +30,27 @@ Followed by:
 
 - In case there is a following complain `Warning: cannot open file 'R/eda.R': No such file or directoryError in file(filename, "r", encoding = encoding) : 
   cannot open the connection go to `tools` > `global options` > `R Markdown` > and make sure Evaluate chunks in directory is set to `Project`
+  
+### Makefile instruction
+
+- To generate the analysis using makefile follows the below mentioned instruction:
+
+- open terminal on your computer and 
+- `cd` into the project directory 
+- Then type `make all` on your terminal
+- After the analysis is generated follow the first three steps in `How to run container`.
+- Then navigate into the `Analysis` folder and open `Analysis.html` on your default browser or `Analysis.pdf` on your pdf reader.
+- All the generated files will be located in `data` and `Results` folder.
 
 ### Dependencies
-- Base Image:- rocker/tidyverse:4.2.2
 
-Packages          Version
+- Base Image:- rocker/verse:4.2.2
+
+Packages -> Version
 - knitr  -> 1.42
 - ggplot2 -> 3.4.1
 - tidyverse  -> 2.0.0
-- dplyr -> 1.1.0
+- docopt. -> 0.7.1
 - GGally  -> 2.1.2
 - tidymodels -> 1.0.0
 - infer  -> 1.0.4
@@ -46,6 +58,7 @@ Packages          Version
 - rmarkdown  -> 2.20
 - here -> 1.0.1
 - markdown -> 1.5
+- bookdown. -> 0.33
 
 ### Licenses
 

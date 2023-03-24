@@ -12,9 +12,9 @@ library(here)
 #' @return Returns the dataset as a datframe
 #' 
 
-read_dataset <- function(path, dest){
-    download.file(path, destfile = dest)
-    dataset <- read.csv(dest)
+read_dataset <- function(path, out_dir){
+    download.file(path, destfile = out_dir)
+    dataset <- read.csv(out_dir)
     return(dataset)
 }
 
@@ -31,14 +31,12 @@ read_dataset <- function(path, dest){
 #' @return Returns the dataframe after selecting the required columns and filtering them based on the criteria given
 #' 
 
-EDA <- function(data, dest,  select_cols, ...) {
+EDA <- function(data, select_cols, ...) {
     library(dplyr)
     
     data <- select(data, all_of(select_cols))
     
     data <- filter(data, ...)
-    
-    write.csv(data, file = dest)
     
     return(data)
 }

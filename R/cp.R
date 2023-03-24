@@ -11,11 +11,10 @@ library(here)
 #' 
 #' @return Returns the generated plot
 #' 
-correlation_plot <- function(data, title, plot_width, plot_height, cpname, path){
+correlation_plot <- function(data, title){
    g <- data %>% 
       ggpairs()+
       ggtitle(title)+
-      theme(text = element_text(size = 5), plot.title = element_text(size = 15, hjust = 0.5))
-  print(g)
-  ggsave(filename = cpname, device = "png", path = path, dpi= 75, width = plot_width, height = plot_height)
+      theme(text = element_text(size = 7), plot.title = element_text(size = 20, hjust = 0.5))
+  return(g)
 }

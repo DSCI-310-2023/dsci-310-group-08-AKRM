@@ -7,6 +7,7 @@ output:
   bookdown::html_document2: 
     toc: true
     toc_depth: 2
+bibliography: references.bib
 ---
 
 ```{r setup, include=FALSE}
@@ -26,7 +27,7 @@ library(dplyr)
 ```
 
 
-By - Rehan Mondal and Abheet Kansal Adapted from DSCI 100 Project by - Ming Zhang, Rehan Mondal, Caroline Lu and Jingwen Leng
+By - Rehan Mondal and Abheet Kansal Adapted from DSCI 100 Project[@Mondal]
 
 ## Summary
 
@@ -34,11 +35,11 @@ The project deals with predicting whether movies with high budget have high reve
 
 ## Introduction
 
-The entertainment industry has always been a profitable field, especially movies. However, with great profit comes great investment. Most modern-day movies require a budget of around 100 million dollars(1). It is crucial for investors/directors to have a general idea of how much profit they can make based on their investment. Thus, this project centers around studying the profitability of a movie before it is released, predicting revenues based on budget using Knn regression (since most movies fall under a general range of budget and there are rarely extreme outliers)
+The entertainment industry has always been a profitable field, especially movies. However, with great profit comes great investment. Most modern-day movies require a budget of around 100 million dollars[@Mueller]. It is crucial for investors/directors to have a general idea of how much profit they can make based on their investment. Thus, this project centers around studying the profitability of a movie before it is released, predicting revenues based on budget using Knn regression (since most movies fall under a general range of budget and there are rarely extreme outliers)
 
 The question we will try to answer with our project is what is the revenue of a movie based on budget. The data set, which consists of 5000 movies from TMDB, will be separated into training and testing sets. Using budget as the predictor, the prediction of test set revenue will be made.
 
-In the data set "TMDB 5000 Movie Dataset" (from "<https://www.kaggle.com/datasets/tmdb/tmdb-movie-metadata>"), revenues, budget, popularity are recorded for the 5000 movies listed in an excel format. Other columns are listed/included in the data set as well, however because they are written in json or not a significant predictor to the revenue, those columns will be filtered out. Revenues is defined as the total box income of the movie; budget is defined as the funding used for the production; Popularity numbers are built according to the TMDB model which consists of number of votes for the day, number of views for the day, number of users who marked it as a "favourite" for the day, Number of users who added it to their "watchlist" for the day, release date, number of total votes, and previous days score. We will discuss and analyze the correlation of each variable with revenue below.
+In the data set "TMDB 5000 Movie Dataset" [@TMDb], revenues, budget, popularity are recorded for the 5000 movies listed in an excel format. Other columns are listed/included in the data set as well, however because they are written in json or not a significant predictor to the revenue, those columns will be filtered out. Revenues is defined as the total box income of the movie; budget is defined as the funding used for the production; Popularity numbers are built according to the TMDB model which consists of number of votes for the day, number of views for the day, number of users who marked it as a "favourite" for the day, Number of users who added it to their "watchlist" for the day, release date, number of total votes, and previous days score. We will discuss and analyze the correlation of each variable with revenue below.
 
 ## Methods & Results:
 
@@ -74,13 +75,13 @@ knitr::include_graphics(here::here("Results/initial_scatter_plot.png"), rel_path
 
 ```
 
-Below we use ggpairs to analyze the correlation between revenues and the predictors "vote_average", "budget", "runtime", and "popularity".
-
-As we can see, the correlation between budget and revenue is the strongest, and it is also our subject of interest since we are trying to predict revenues based off budget which can directly influence the profit of the investors. All the other predictors have little to no correlation with revenues. Other predictors such as popularity are only relevant or in-existence after the production of the movie which are also not reliable predictors to understand revenue before the investment. For example, Popularity numbers are built according to the TMDB model which consists of number of votes for the day, number of views for the day, number of users who marked it as a "favourite" for the day, Number of users who added it to their "watchlist" for the day, release date, number of total votes, and previous days score (which are only recorded after the movie is produced).
+We use ggpairs to analyze the correlation between revenues and the predictors "vote_average", "budget", "runtime", and "popularity".
 
 ```{r, echo=FALSE}
  knitr::include_graphics(here::here("Results/cp.png"), rel_path = FALSE)
 ```
+As we can see, the correlation between budget and revenue is the strongest, and it is also our subject of interest since we are trying to predict revenues based off budget which can directly influence the profit of the investors. All the other predictors have little to no correlation with revenues. Other predictors such as popularity are only relevant or in-existence after the production of the movie which are also not reliable predictors to understand revenue before the investment. For example, Popularity numbers are built according to the TMDB model which consists of number of votes for the day, number of views for the day, number of users who marked it as a "favourite" for the day, Number of users who added it to their "watchlist" for the day, release date, number of total votes, and previous days score (which are only recorded after the movie is produced).
+
 
 ### Knn-nearest neighbor regression model training
 
@@ -151,20 +152,12 @@ We find that the revenue of a film is most closely related to the investment cos
 
 ### Impact of Results
 
-"Movie revenue depends on multiple factors such as cast, budget, film critic review, MPAA rating, release year." (Apte, 2011). However, due to the complexity and multi-dimensionality of the multiple factors, an accurate model is difficult to create with those factors together. However, by analyzing the relationship between budget and revenue which have similar range and values, we can visualize trends in production investment and revenue. Movie production requires large sums of investment and subsequent effort, so it is crucial to understand how revenue is linked with budget. By creating this model, we successfully visualized the correlation and future predictions can be made. Such a prediction could be very useful for the movie studio which will be producing the movie so they can decide on expenses like artist compensations, advertising, promotions, etc. accordingly (Apte, 2011). Movie theatres will also be able to estimate the revenues they would generate from screening a particular movie based on given budget.
+"Movie revenue depends on multiple factors such as cast, budget, film critic review, MPAA rating, release year." [@Nikhil]. However, due to the complexity and multi-dimensionality of the multiple factors, an accurate model is difficult to create with those factors together. However, by analyzing the relationship between budget and revenue which have similar range and values, we can visualize trends in production investment and revenue. Movie production requires large sums of investment and subsequent effort, so it is crucial to understand how revenue is linked with budget. By creating this model, we successfully visualized the correlation and future predictions can be made. Such a prediction could be very useful for the movie studio which will be producing the movie so they can decide on expenses like artist compensations, advertising, promotions, etc. accordingly [@Nikhil]. Movie theatres will also be able to estimate the revenues they would generate from screening a particular movie based on given budget.
 
 ### Future Questions
 
-According to our findings, the correlation between revenue and budget is the strongest. This raises the question - Would a higher budget always indicate a higher revenue? Besides increasing the budget, we should think about what other ways we can improve our model to predict the revenue of the film. The future questions that our research could lead to is to what extent the increase in budget would affect the revenue of a movie belonging to a particular genre. Building onto that we can also do further research to improve the other predictors that can be used for data analysis. The research can also qualify as a classification problem if we choose to focus on a particular category of a movie or a particular production house, and compare which production company generates greater revenue (Mueller, 2021). Box office trends largely reflect audience satisfaction with a film. So this raises the question of whether it's more important to increase the budget, or to focus on the content and quality of the movie.
+According to our findings, the correlation between revenue and budget is the strongest. This raises the question - Would a higher budget always indicate a higher revenue? Besides increasing the budget, we should think about what other ways we can improve our model to predict the revenue of the film. The future questions that our research could lead to is to what extent the increase in budget would affect the revenue of a movie belonging to a particular genre. Building onto that we can also do further research to improve the other predictors that can be used for data analysis. The research can also qualify as a classification problem if we choose to focus on a particular category of a movie or a particular production house, and compare which production company generates greater revenue [@Mueller]. Box office trends largely reflect audience satisfaction with a film. So this raises the question of whether it's more important to increase the budget, or to focus on the content and quality of the movie.
 
-## Citation
-
-(TMDb), T. M. D. (2017, September 28). TMDB 5000 movie dataset. Kaggle. Retrieved April 7, 2022, from https://www.kaggle.com/datasets/tmdb/tmdb-movie-metadata
-
-Mueller, A. (2021, December 1). Why movies cost so much to make. Investopedia. Retrieved April 7, 2022, from https://www.investopedia.com/financial-edge/0611/why-movies-cost-so-much-tomake.aspx#:~:text=Movie%20budgets%20can%20average%20around,and%20special%20effects%2C%20and%20marketing
-
-Nikhil, A. (2021, December 16). Predicting movie revenue - cs229.stanford.edu. Predicting Movie Revenue. Retrieved April 8, 2022, from https://cs229.stanford.edu/proj2011/ApteForssellSidhwa-PredictingMovieRevenue.pdf
-
-Mondal, R., Zhang, M., Lu, C., & Leng, J. (2022). Predicting the revenue of the movies based on budget. Retrieved 2023, from https://github.com/rehan13/DSCI-100-Project-Group25.git
+## References
 
 

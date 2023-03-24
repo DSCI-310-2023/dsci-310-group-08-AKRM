@@ -42,12 +42,12 @@ We used functions from the tidyverse library to manipulate data frames and tibbl
 
 
 ```{r}
-data <- read.csv("data/dataset.csv")
+data <- read.csv(here("data/dataset.csv"))
 ```
 
 
 ```{r}
-clean_data <- read.csv("Results/clean_dataset.csv")
+clean_data <- read.csv(here("Results/clean_dataset.csv"))
 clean_data <- head(clean_data)
 knitr::kable(clean_data, caption = "TMDB rating")
 ```
@@ -112,7 +112,7 @@ Here we can see neighbor $K = 85$ gives us the minimum $RMSE$.
 
 ```{r}
 # Exact K value
-minK <- read.csv("Results/minK.csv")
+minK <- read.csv(here("Results/minK.csv"))
 knitr::kable(minK, caption = "Minimum Value of K")     
 ```
 We assigned the best $K$ to `k_min`, and use the best $K$ value to recreate our model following the same steps as before.
@@ -122,7 +122,7 @@ Finally, we will pass the testing dataset into our final regression model. The m
 
 ```{r}
 # Summary data
-revenue_summary <- read.csv("Results/revenue_summary.csv")
+revenue_summary <- read.csv(here("Results/revenue_summary.csv"))
 knitr::kable(revenue_summary, caption = "Summary data of analysis") 
 ```
 At last, we visualize our prediction using ggplot functions to evaluate if our model is overfitting, underfitting or a good fit for our target.

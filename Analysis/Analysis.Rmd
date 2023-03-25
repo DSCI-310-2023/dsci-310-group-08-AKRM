@@ -46,24 +46,24 @@ In the data set "TMDB 5000 Movie Dataset" [@TMDb], revenues, budget, popularity 
 We used functions from the tidyverse library to manipulate data frames and tibbles. repr is used to resize plots contained in this notebook, such as an "Accuracy vs K" graph. tidymodels is a package used for statistical and modeling analysis. GGally extends ggplot2 by adding several functions to reduce the complexity of combining geoms with transformed data. cowplot is used to generate the function plot-grid to easily compare plots.
 
 
-```{r, echo=FALSE}
+```{r , echo=FALSE}
 data <- read.csv(here("data/dataset.csv"))
 ```
 
 
-```{r, echo=FALSE}
+```{r tmdb, echo=FALSE}
 clean_data <- read.csv(here("Results/clean_data.csv"))
 clean_data <- head(clean_data)
 knitr::kable(clean_data, caption = "TMDB rating")
 ```
 
-As of now, we have a single giant data frame consisting of all the data of TMDB movie. If we pass all of the revenue data into our model, we would not have any data to use as a measure of how accurate the model is. If we use the data that we have used to train the model before, the model will recognize that data because it has "seen" it before and will most likely produce a faulty accuracy that is higher than reality.
+We can see from the Table \@ref(tab:tmdb) that as of now, we have a single giant data frame consisting of all the data of TMDB movie. If we pass all of the revenue data into our model, we would not have any data to use as a measure of how accurate the model is. If we use the data that we have used to train the model before, the model will recognize that data because it has "seen" it before and will most likely produce a faulty accuracy that is higher than reality.
 
 Therefore, to allow a fair process of measuring the model's accuracy, we must calculate its accuracy based on how accurate it is at predicting revenues that it hasn't "seen" before. To do this, we split the data into training and testing datasets and only use the training dataset to create our regression model. By doing so, we will have a set of data that the machine learning hasn't seen before.
 
 To do this, we will use the golden ratio which is a 75-25% ratio of training and testing datasets respectively. The strata statement can shuffle and ensure the data is not split unrepresentatively.
 
-To make sure that this process is replicable, we use set.seed().
+To make sure that this process is replicable, we use set.seed() to generate the plot like in  Figure \@ref(fig:inscatter).
 
 
 ```{r inscatter, fig.cap = "Train Data Plot", echo=FALSE}
@@ -75,7 +75,7 @@ knitr::include_graphics(here::here("Results/initial_scatter_plot.png"), rel_path
 
 ```
 
-We use ggpairs to analyze the correlation between revenues and the predictors "vote_average", "budget", "runtime", and "popularity".
+We use ggpairs to analyze the correlation between revenues and the predictors "vote_average", "budget", "runtime", and "popularity" to get the Figure \@ref(fig:inresult).
 
 ```{r inresult, fig.cap = "Relationship between Variables Plot", echo=FALSE}
  knitr::include_graphics(here::here("Results/cp.png"), rel_path = FALSE)
@@ -91,22 +91,21 @@ If we split our overall training data once, our best parameter choice will depen
 
 In cross-validation, we split our overall training data into $x$ evenly-sized chunks, and then iteratively use 1 chunk as the validation set and combine the remaining $x-1$ chunks as the training set.
 
-We decided to split our overall training data up in multiple different ways using `vfold_cv`, train and evaluate a regression model for each split, and then choose the parameter based on all of the different results. The v value is set as 5 which is the number of folds, and we set revenue as the strata arguement.
+We decided to split our overall training data up in multiple different ways using `vfold_cv`, train and evaluate a regression model for each split, and then choose the parameter based on all of the different results. The v value is set as 5 which is the number of folds, and we set revenue as the strata arguement which is used in cross validation in the backend.
 
 We created **revenue_spec** using the `nearest_neighbor` function.
 
-In order to improve our regression model, we need to change the parameter: number of neighbours, $K$. Since cross-validation helps us evaluate the accuracy of our model, we can use cross-validation to pick the value of 
-$K$ that gives us the best accuracy.
+In order to improve our regression model, we need to change the parameter: number of neighbours, $K$. Since cross-validation helps us evaluate the accuracy of our model, we can use cross-validation to pick the value of $K$ that gives us the best accuracy.
 
 Using `tune()` in `tidymodels` package, each parameter in the model can be altered/attempted rather than given a specific value.
 
-Using `workflow`, we can chain together multiple data analysis steps without a lot of otherwise necessary code for intermediate steps. We use the **revenue_recipe** and **revenue_spec** we have created previously in the workflow.
+Using `workflow`, we can chain together multiple data analysis steps without a lot of otherwise necessary code for intermediate steps. We use the **revenue_recipe** and **revenue_spec** we have created previously in the backend of the workflow.
 
-We can use `tibble` to create a set of values we will be using for the grid arguement (the range of parameter we will be testing). Here, we indicated the $K$ value to range from 1 to 500, and step by 2.
+We can use `tibble` to create a set of values we will be using for the grid arguement (the range of parameter we will be testing). Here, we used the $K$ value to range from 1 to 500, and step by 2.
 
-We can then use the tune_grid function to fit the model for each value in a range of parameter values. For the resamples argument, we input the cross-validation revenue_vfold we created earlier. The grid argument specifies that the tuning should try $X$ amount of values of the number of neighbors $K$ when tuning, we input the gridvals object we created earlier to indicate the range of parameters we would like to try.
+We can then use the tune_grid function to fit the model for each value in a range of parameter values. For the resamples argument as part of the function, we input the cross-validation revenue_vfold we created earlier. The grid argument specifies that the tuning should try $X$ amount of values of the number of neighbors $K$ when tuning, we input the gridvals object we created earlier to indicate the range of parameters we would like to try.
 
-We then used filter to only list out rmse (which represent $RMSE$: root mean square prediction error) to use to evaluate for the best k value.
+We then used filter to only list out rmse (which represent $RMSE$: root mean square prediction error) to use to evaluate for the best $K$ value as shown in Figure \@ref(fig:kplot).
 
 ```{r kplot, fig.cap = "K-Value Plot Plot", echo=FALSE}
 # Plot K Values

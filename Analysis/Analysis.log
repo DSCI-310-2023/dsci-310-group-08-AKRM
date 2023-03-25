@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.3.15)  25 MAR 2023 01:22
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.3.15)  25 MAR 2023 01:44
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -557,13 +557,7 @@ Overfull \hbox (180.68pt too wide) in paragraph at lines 200--200
 
 LaTeX Warning: Float too large for page by 23.94943pt on input line 201.
 
-
-LaTeX Warning: Reference `fig:kval' on page 5 undefined on input line 218.
-
-
-LaTeX Warning: Reference `fig:summary' on page 5 undefined on input line 239.
-
-</home/rstudio/Results/revenue_Budget_plot.png, id=70, 722.7pt x 722.7pt>
+</home/rstudio/Results/revenue_Budget_plot.png, id=72, 722.7pt x 722.7pt>
 File: /home/rstudio/Results/revenue_Budget_plot.png Graphic file (type png)
 <use /home/rstudio/Results/revenue_Budget_plot.png>
 Package pdftex.def Info: /home/rstudio/Results/revenue_Budget_plot.png  used on
@@ -585,17 +579,14 @@ o -[] much -[] tomake . aspx# : ~ : text = Movie % 20budgets % 20can %
  []
 
 [9] (./Analysis.aux)
-
-LaTeX Warning: There were undefined references.
-
 Package rerunfilecheck Info: File `Analysis.out' has not changed.
 (rerunfilecheck)             Checksum: 19A46C1D572C6FBF7EBE925AE312CD7A;535.
  ) 
 Here is how much of TeX's memory you used:
- 11657 strings out of 477984
- 180140 string characters out of 5839381
+ 11655 strings out of 477984
+ 180117 string characters out of 5839381
  1867388 words of memory out of 5000000
- 31609 multiletter control sequences out of 15000+600000
+ 31607 multiletter control sequences out of 15000+600000
  557891 words of font info for 71 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  63i,8n,67p,1149b,452s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -609,10 +600,10 @@ onts/type1/public/lm/lmr10.pfb></usr/local/texlive/texmf-dist/fonts/type1/publi
 c/lm/lmr17.pfb></usr/local/texlive/texmf-dist/fonts/type1/public/lm/lmr7.pfb></
 usr/local/texlive/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/local/texli
 ve/texmf-dist/fonts/type1/public/lm/lmtt10.pfb>
-Output written on Analysis.pdf (9 pages, 1393079 bytes).
+Output written on Analysis.pdf (9 pages, 1386904 bytes).
 PDF statistics:
- 175 PDF objects out of 1000 (max. 8388607)
- 141 compressed objects within 2 object streams
+ 177 PDF objects out of 1000 (max. 8388607)
+ 143 compressed objects within 2 object streams
  43 named destinations out of 1000 (max. 500000)
  61 words of extra memory for PDF output out of 10000 (max. 10000000)
 

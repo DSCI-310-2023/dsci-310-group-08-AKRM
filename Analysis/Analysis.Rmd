@@ -1,10 +1,10 @@
 ---
 title: "Predicting the revenue of the movies based on budget"
 output:
-  bookdown::pdf_document2: 
+  bookdown::html_document2: 
     toc: true
     toc_depth: 2
-  bookdown::html_document2: 
+  bookdown::pdf_document2: 
     toc: true
     toc_depth: 2
 bibliography: references.bib
@@ -66,7 +66,7 @@ To do this, we will use the golden ratio which is a 75-25% ratio of training and
 To make sure that this process is replicable, we use set.seed().
 
 
-```{r, echo=FALSE}
+```{r inscatter, fig.cap = "Train Data Plot", echo=FALSE}
 
 # Graph for train data
 
@@ -77,10 +77,10 @@ knitr::include_graphics(here::here("Results/initial_scatter_plot.png"), rel_path
 
 We use ggpairs to analyze the correlation between revenues and the predictors "vote_average", "budget", "runtime", and "popularity".
 
-```{r, echo=FALSE}
+```{r inresult, fig.cap = "Relationship between Variables Plot", echo=FALSE}
  knitr::include_graphics(here::here("Results/cp.png"), rel_path = FALSE)
 ```
-As we can see, the correlation between budget and revenue is the strongest, and it is also our subject of interest since we are trying to predict revenues based off budget which can directly influence the profit of the investors. All the other predictors have little to no correlation with revenues. Other predictors such as popularity are only relevant or in-existence after the production of the movie which are also not reliable predictors to understand revenue before the investment. For example, Popularity numbers are built according to the TMDB model which consists of number of votes for the day, number of views for the day, number of users who marked it as a "favourite" for the day, Number of users who added it to their "watchlist" for the day, release date, number of total votes, and previous days score (which are only recorded after the movie is produced).
+As we can see from Figure \@ref(fig:inscatter) and Figure \@ref(fig:inresult), the correlation between budget and revenue is the strongest, and it is also our subject of interest since we are trying to predict revenues based off budget which can directly influence the profit of the investors. All the other predictors have little to no correlation with revenues. Other predictors such as popularity are only relevant or in-existence after the production of the movie which are also not reliable predictors to understand revenue before the investment. For example, Popularity numbers are built according to the TMDB model which consists of number of votes for the day, number of views for the day, number of users who marked it as a "favourite" for the day, Number of users who added it to their "watchlist" for the day, release date, number of total votes, and previous days score (which are only recorded after the movie is produced).
 
 
 ### Knn-nearest neighbor regression model training
@@ -108,31 +108,31 @@ We can then use the tune_grid function to fit the model for each value in a rang
 
 We then used filter to only list out rmse (which represent $RMSE$: root mean square prediction error) to use to evaluate for the best k value.
 
-```{r, echo=FALSE}
+```{r kplot, fig.cap = "K-Value Plot Plot", echo=FALSE}
 # Plot K Values
 knitr::include_graphics(here::here("Results/K-value_plot.png"), rel_path = FALSE)
 ```
 
-Here we can see neighbor $K = 85$ gives us the minimum $RMSE$.
+Here from the plot in Figure \@ref(fig:kplot) we can see neighbor $K = 85$ gives us the minimum $RMSE$.
 
-```{r, echo=FALSE}
+```{r kval, fig.cap = "Minimum K-Value", echo=FALSE}
 # Exact K value
 minK <- read.csv(here("Results/revenue_min.csv"))
 knitr::kable(minK, caption = "Minimum Value of K")     
 ```
-We assigned the best $K$ to `k_min`, and use the best $K$ value to recreate our model following the same steps as before.
+We assigned the best $K$ to `k_min` with the use of Table \@ref(tab:kval), and use the best $K$ value to recreate our model following the same steps as before.
 
 
 Finally, we will pass the testing dataset into our final regression model. The model will predict the revenue using the `predict()` function function, and be use `bind_cols` to combine with the revenue_test column for readability. We will compare its predictions with the actual labels.
 
-```{r, echo=FALSE}
+```{r summary, fig.cap = "Revenue Summary Table", echo=FALSE}
 # Summary data
 revenue_summary <- read.csv(here("Results/revenue_summary.csv"))
 knitr::kable(revenue_summary, caption = "Summary data of analysis") 
 ```
-At last, we visualize our prediction using ggplot functions to evaluate if our model is overfitting, underfitting or a good fit for our target.
+At last, we visualize our prediction Table \@ref(tab:summary) using ggplot functions to evaluate if our model is overfitting, underfitting or a good fit for our target which is shown in Figure \@ref(fig:bplot).
 
-```{r, echo=FALSE}
+```{r bplot, fig.cap = "Relationship between Budget and Revenue", echo=FALSE}
 # Regression Plot
 knitr::include_graphics(here::here("Results/revenue_Budget_plot.png"), rel_path = FALSE)
 ```

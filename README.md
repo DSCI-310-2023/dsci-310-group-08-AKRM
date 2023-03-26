@@ -41,6 +41,7 @@ Followed by:
 
 - open terminal on your computer and 
 - `cd` into the project directory 
+- Use`make clean`to clear out any unnecessary prexisting results.
 - Then type `make all` on your terminal
 - After the analysis is generated follow the first three steps in `How to run container`.
 - Then navigate into the `Analysis` folder and open `Analysis.html` on your default browser or `Analysis.pdf` on your pdf reader.

@@ -1,29 +1,24 @@
 ---
 title: "Predicting the revenue of the movies based on budget"
 output:
-  bookdown::html_document2: 
+  bookdown::pdf_document2:
+    extra_dependencies: ["float"]
+    fig_captions: yes
     toc: true
     toc_depth: 2
-  bookdown::pdf_document2: 
+  bookdown::html_document2:
     toc: true
     toc_depth: 2
 bibliography: references.bib
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(fig.pos = "H", out.extra = "", echo = TRUE)
 ```
 
-```{r, echo=FALSE, include=FALSE}
-library(tinytex)
+```{r , include=FALSE}
 library(here)
-library(tidyverse)
-library(repr)
-library(tidymodels)
-library(GGally)
-library(infer)
-library(cowplot)
-library(dplyr)
+
 ```
 
 
@@ -66,26 +61,26 @@ To do this, we will use the golden ratio which is a 75-25% ratio of training and
 To make sure that this process is replicable, we use set.seed() to generate the plot like in  Figure \@ref(fig:inscatter).
 
 
-```{r inscatter, fig.cap = "Train Data Plot", echo=FALSE}
-
+```{r inscatter, fig.cap = "Train Data Plot", out.width="60%", out.height="60%", fig.align='center', fig.pos = "H", echo=FALSE}
 # Graph for train data
-
-
 knitr::include_graphics(here::here("Results/initial_scatter_plot.png"), rel_path = FALSE)
 
 ```
 
-We use ggpairs to analyze the correlation between revenues and the predictors "vote_average", "budget", "runtime", and "popularity" to get the Figure \@ref(fig:inresult).
+We use ggpairs to analyze the correlation between revenues and the predictors "vote_average", "budget", "runtime", and "popularity" to get the correlation among variables.
 
-```{r inresult, fig.cap = "Relationship between Variables Plot", echo=FALSE}
+```{r inresult, fig.cap = "Relationship between Variables Plot", out.width="60%", out.height="60%", fig.align='center', fig.pos = "H", echo=FALSE}
  knitr::include_graphics(here::here("Results/cp.png"), rel_path = FALSE)
+
 ```
+
+
 As we can see from Figure \@ref(fig:inscatter) and Figure \@ref(fig:inresult), the correlation between budget and revenue is the strongest, and it is also our subject of interest since we are trying to predict revenues based off budget which can directly influence the profit of the investors. All the other predictors have little to no correlation with revenues. Other predictors such as popularity are only relevant or in-existence after the production of the movie which are also not reliable predictors to understand revenue before the investment. For example, Popularity numbers are built according to the TMDB model which consists of number of votes for the day, number of views for the day, number of users who marked it as a "favourite" for the day, Number of users who added it to their "watchlist" for the day, release date, number of total votes, and previous days score (which are only recorded after the movie is produced).
 
 
 ### Knn-nearest neighbor regression model training
 
-First, we created a recipe using the recipe functions with the variables of interest `budget` using the training dataset and assign your answer to an object named revenue_recipe. We also thought of scaling `step_scale` and centering `step_center` steps for all of the predictors so that they each have a mean of 0 and standard deviation of 1, but it was not necessary because we only have one predictor, and standardization can cause a loss of interpretation.
+First, we created a recipe using the recipe functions with the variables of interest `budget` using the training dataset and assign your answer to an object named revenue_recipe. We also thought of scaling using `step_scale` and centering using `step_center` steps for all of the predictors so that they each have a mean of 0 and standard deviation of 1, but it was not necessary because we only have one predictor, and standardization can cause a loss of interpretation.
 
 If we split our overall training data once, our best parameter choice will depend strongly on our luck (since whatever data that lands in the validation set is random). By using multiple different train / validation splits, a better accuracy/representation of the data can be estimated, which will lead to a better choice of the number of neighbours $K$ for the overall set of training data.
 
@@ -107,31 +102,33 @@ We can then use the tune_grid function to fit the model for each value in a rang
 
 We then used filter to only list out rmse (which represent $RMSE$: root mean square prediction error) to use to evaluate for the best $K$ value as shown in Figure \@ref(fig:kplot).
 
-```{r kplot, fig.cap = "K-Value Plot Plot", echo=FALSE}
+```{r kplot, fig.cap = "K-Value Plot Plot", out.width="60%", out.height="60%", fig.align='center', fig.pos = "H", echo=FALSE}
 # Plot K Values
 knitr::include_graphics(here::here("Results/K-value_plot.png"), rel_path = FALSE)
 ```
 
-Here from the plot in Figure \@ref(fig:kplot) we can see neighbor $K = 85$ gives us the minimum $RMSE$.
-
-```{r kval, fig.cap = "Minimum K-Value", echo=FALSE}
+```{r kval, echo=FALSE}
 # Exact K value
 minK <- read.csv(here("Results/revenue_min.csv"))
-knitr::kable(minK, caption = "Minimum Value of K")     
+minimum_k = minK[1]
+knitr::kable(minK, caption = "Minimum Value of K")
 ```
-We assigned the best $K$ to `k_min` with the use of Table \@ref(tab:kval), and use the best $K$ value to recreate our model following the same steps as before.
+
+From Figure \@ref(fig:kplot) and Table \@ref(tab:kval) we can see neighbor K = `r minimum_k` gives us the minimum $RMSE$.
+
+Finally, we will pass the test set into our final regression model. The model will predict the revenue using the `predict()` function function, and be use `bind_cols` to combine with the revenue_test column for readability. We will compare its predictions with the actual labels.
 
 
-Finally, we will pass the testing dataset into our final regression model. The model will predict the revenue using the `predict()` function function, and be use `bind_cols` to combine with the revenue_test column for readability. We will compare its predictions with the actual labels.
-
-```{r summary, fig.cap = "Revenue Summary Table", echo=FALSE}
+```{r summary, echo=FALSE}
 # Summary data
 revenue_summary <- read.csv(here("Results/revenue_summary.csv"))
-knitr::kable(revenue_summary, caption = "Summary data of analysis") 
+rmse <- revenue_summary[1,3]
+knitr::kable(revenue_summary, caption = "Summary data of analysis")
 ```
+
 At last, we visualize our prediction Table \@ref(tab:summary) using ggplot functions to evaluate if our model is overfitting, underfitting or a good fit for our target which is shown in Figure \@ref(fig:bplot).
 
-```{r bplot, fig.cap = "Relationship between Budget and Revenue", echo=FALSE}
+```{r bplot, fig.cap = "Relationship between Budget and Revenue",  out.width="60%", out.height="60%", fig.align='center', fig.pos = "H", echo=FALSE}
 # Regression Plot
 knitr::include_graphics(here::here("Results/revenue_Budget_plot.png"), rel_path = FALSE)
 ```
@@ -145,9 +142,9 @@ This project centers around studying the profitability of a movie before it is r
 ### Summary of Results
 
 The result discovered through the model and supports our hypothesis. as we expected, we found the relationship between the profitability of a movie and the revenues is positive within the budget range of $0$ to $2*10^8$, after that the slope of the budget and the revenue will go close to 0, which means our prediction of the revenue will stay constant as the budget increase. This limitation is caused by the use of KNN nearest-neighbor regression since it can only predict accurately within our range. The $RMSE$ from our result is 
-$1.316789*10^8$, which is approximate $1/10$ of our revenue. This is not a significant mistake, however this model can be improved further.
+`r rmse`, which is approximate $1/10$ of our revenue. This is not a significant mistake, however this model can be improved further.
 
-We find that the revenue of a film is most closely related to the investment cost of the film. Therefore, if we want to make the film more profitable, we have to increase the investment cost of the film to some extent. KNN regression is very advantageous because it has strong elasticity to noise and effective data training in the case of training large amounts of data. We also have a close range of budget with very few outliers outside of the range so KNN regression works better than linear regression. By looking at the relationship_revenue graph, we can see the correlation between budget and revenue is 0.69, whereas the others are below 0.6. This is why we use only one predictor in our project, since others have weak correlation with the target variable. If we use those weak predictors, the K value will be affected and the prediction will be less accurate and does not serve our purpose of prediction. As indicated by the graph "Relation Between Budget and Revenue", it is a perfect fit as it is neither underfitting or overfitting, thus it will be able to make reasonable prediction to some extend.
+We find that the revenue of a film is most closely related to the investment cost of the film. Therefore, if we want to make the film more profitable, we have to increase the investment cost of the film to some extent. KNN regression is very advantageous because it has strong elasticity to noise and effective data training in the case of training large amounts of data. We also have a close range of budget with very few outliers outside of the range so KNN regression works better than linear regression. By looking at the Figure \@ref(fig:inresult), we can see the correlation between budget and revenue is 0.69, whereas the others are below 0.6. This is why we use only one predictor in our project, since others have weak correlation with the target variable. If we use those weak predictors, the K value will be affected and the prediction will be less accurate and does not serve our purpose of prediction. As indicated by the graph "Relation Between Budget and Revenue", it is a perfect fit as it is neither underfitting or overfitting, thus it will be able to make reasonable prediction to some extend.
 
 ### Impact of Results
 

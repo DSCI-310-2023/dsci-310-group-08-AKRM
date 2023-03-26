@@ -22,7 +22,7 @@ source(here("R/eda.R"))
 
 plot_scatter_graph <- function(data, x_axis_data, 
                                y_axis_data, x_axis_label, y_axis_label, title_label,
-                               text_size, path) {
+                               text_size) {
   
     g <- ggplot(data, aes(x = {{x_axis_data}}, y = {{y_axis_data}})) + 
       geom_point() +

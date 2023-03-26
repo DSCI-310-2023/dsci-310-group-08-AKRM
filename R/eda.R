@@ -7,7 +7,7 @@ library(here)
 #'
 #' @param path The path where the dataset is which needs to be stored in the given path
 #'
-#' @param dest The destination where the entered path for the dataset needs to be saved
+#' @param out_dir The destination where the entered path for the dataset needs to be saved
 #' 
 #' @return Returns the dataset as a datframe
 #' 

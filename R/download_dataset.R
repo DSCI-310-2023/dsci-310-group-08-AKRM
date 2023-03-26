@@ -4,6 +4,7 @@ Options:
 --url=<url>              URL from where to download the data (must be in standard csv format)
 --out_dir=<out_dir>    Path (including filename) of where to locally write the file
 " -> doc
+set.seed(15)
 
 library(here)
 library(docopt)

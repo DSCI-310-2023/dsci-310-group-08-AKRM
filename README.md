@@ -59,6 +59,7 @@ Packages -> Version
 - here -> 1.0.1
 - markdown -> 1.5
 - bookdown. -> 0.33
+- float -> 0.3-1 
 
 ### Licenses
 

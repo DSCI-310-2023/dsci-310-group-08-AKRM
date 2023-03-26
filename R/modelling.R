@@ -16,10 +16,12 @@ library(tidymodels)
 library(GGally)
 library(infer)
 library(cowplot)
+library(here)
 source(here("R/eda.R"))
 source(here("R/cp.R"))
 source(here("R/grapher.R"))
 
+set.seed(15)
 
 opt <- docopt(doc)
 

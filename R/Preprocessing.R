@@ -13,11 +13,10 @@ source(here("R/eda.R"))
 source(here("R/cp.R"))
 source(here("R/grapher.R"))
 
-
+set.seed(15)
 
 # EDA on the raw data 
 opt <- docopt(doc)
-
 main <- function(raw, out_dir){
   
   data <- read.csv(raw)
@@ -25,7 +24,7 @@ main <- function(raw, out_dir){
   
   
   # Train / Test Data
-  set.seed(15)
+
   revenue_split <- initial_split(clean_data, prop = 0.75, strata = revenue)
   revenue_train <- training(revenue_split)
   revenue_test <- testing(revenue_split)

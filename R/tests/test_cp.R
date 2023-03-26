@@ -13,3 +13,4 @@ correlation_plot = correlation_plot(data_test, "correlation")
 
 # Test for expected outputs to check correlation_plot
 testthat::expect_identical(correlation_plot$title, "correlation")
+testthat::expect_s3_class(correlation_plot, "ggmatrix")

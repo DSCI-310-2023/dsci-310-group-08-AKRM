@@ -30,7 +30,7 @@ Followed by:
 
 - * alternate way to get the image: 
 
-- The following command in the terminal after you are reach the directory. docker pull rehan13/dsci-310-group-08-akrm:latest
+- The following command in the terminal after you are reach the directory. `docker pull rehan13/dsci-310-group-08-akrm:latest`
 
 - In case there is a following complain `Warning: cannot open file 'R/eda.R': No such file or directoryError in file(filename, "r", encoding = encoding) : 
   cannot open the connection go to `tools` > `global options` > `R Markdown` > and make sure Evaluate chunks in directory is set to `Project`

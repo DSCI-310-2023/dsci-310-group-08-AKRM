@@ -43,7 +43,7 @@ Followed by:
 - `cd` into the project directory 
 - Use`make clean`to clear out any unnecessary prexisting results.
 - Then type `make all` on your terminal
-- After the analysis is generated follow the first three steps in `How to run container`.
+- After the analysis is generated follow the steps three and four in `How to run container`.
 - Then navigate into the `Analysis` folder and open `Analysis.html` on your default browser or `Analysis.pdf` on your pdf reader.
 - All the generated files will be located in `data` and `Results` folder.
 

@@ -19,10 +19,10 @@ In the data set “TMDB 5000 Movie Dataset” (from "https://www.kaggle.com/data
 repository and `cd` into the directory. Then run the following command at the command line/terminal
 from the root directory of this project:
 
-- `docker build --tag akrm-env .`
+```docker build --tag akrm-env .```
 
 Followed by:
-- `docker run --rm -p 8787:8787 -v "${PWD}":/home/rstudio -e PASSWORD="apassword" akrm-env`
+```docker run --rm -p 8787:8787 -v "${PWD}":/home/rstudio -e PASSWORD="apassword" akrm-env```
 
 - To open Rstudio on the web browser `http://localhost:8787` and enter the username as `rstudio` and password as `apassword` 
 

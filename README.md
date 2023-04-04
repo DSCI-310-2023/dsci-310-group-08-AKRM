@@ -46,8 +46,8 @@ docker run --rm -p 8787:8787 -v "${PWD}":/home/rstudio -e PASSWORD="apassword" a
 - open terminal on your computer and 
 - `cd` into the project directory 
 - Use`make clean`to clear out any unnecessary prexisting results.
-- Then type `make all` on your terminal
-- After the analysis is generated follow the steps three and four in `How to run container`.
+- Then type `make all` on the terminal.
+- After the analysis is generated open the container using the steps above.
 - Then navigate into the `Analysis` folder and open `Analysis.html` on your default browser or `Analysis.pdf` on your pdf reader.
 - All the generated files will be located in `data` and `Results` folder.
 

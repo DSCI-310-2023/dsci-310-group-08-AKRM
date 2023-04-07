@@ -21,7 +21,7 @@ In the data set “TMDB 5000 Movie Dataset” (from "https://www.kaggle.com/data
 git clone https://github.com/rehan13/dsci-310-group-08-AKRM.git
 ```
 
-- `cd` into the directory. Then run the following command at the command line/terminal
+- `cd` into the directory. Then run one of the following commands on the command line/terminal
 from the root directory of this project:
 
 1. **Option A** (This takes longer time to build)

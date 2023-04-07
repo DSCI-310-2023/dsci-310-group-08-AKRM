@@ -24,12 +24,11 @@ git clone https://github.com/rehan13/dsci-310-group-08-AKRM.git
 - `cd` into the directory. Then run the following command at the command line/terminal
 from the root directory of this project:
 
-  - Option A (This takes longer time to build)
+1. **Option A** (This takes longer time to build)
 ``` 
 docker build --tag akrm-env .
 ```
-
-  - Option B
+2. **Option B**
 ```
 docker pull rehan13/dsci-310-group-08-akrm:latest
 ```

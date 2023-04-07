@@ -26,7 +26,7 @@ from the root directory of this project:
 
 1. **Option A** (This takes longer time to build)
 ``` 
-docker build --tag akrm-env .
+docker build --tag rehan13/dsci-310-group-08-akrm:latest .
 ```
 2. **Option B**
 ```
@@ -36,7 +36,7 @@ docker pull rehan13/dsci-310-group-08-akrm:latest
 -  Followed by the command below to open the container below.
 
 ``` 
-docker run --rm -p 8787:8787 -v /${PWD}:/home/rstudio -e PASSWORD="apassword" akrm-env 
+docker run --rm -p 8787:8787 -v /${PWD}:/home/rstudio -e PASSWORD="apassword" rehan13/dsci-310-group-08-akrm:latest
 ```
 
 - To open Rstudio on the web browser copy the url `http://localhost:8787` and open it on web browser. Enter `rstudio` as username and `apassword` as password. 
@@ -64,6 +64,7 @@ This will generate the analysis and all the necessary supporting files including
 - Base Image:- rocker/verse:4.2.2
 
 Packages -> Version
+- Movie -> 1.0.0
 - testthat -> 3.1.6
 - knitr  -> 1.42
 - ggplot2 -> 3.4.1

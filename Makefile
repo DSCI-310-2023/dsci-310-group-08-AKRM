@@ -1,4 +1,4 @@
-all: data/dataset.csv Results/clean_data.csv Results/test.csv Results/train.csv Results/revenue_results.csv Results/revenue_min.csv Results/revenue_preds.csv Results/revenue_summary.csv Results/initial_scatter_plot.png Results/cp.png Results/K-Value_plot.png Results/revenue_budget_plot.png Analysis/Analysis.html Analysis/Analysis.pdf
+all: data/dataset.csv Results/clean_data.csv Results/test.csv Results/train.csv Results/revenue_results.csv Results/revenue_min.csv Results/revenue_preds.csv Results/revenue_summary.csv Results/initial_scatter_plot.png Results/cp.png Results/K-Value_plot.png Results/revenue_Budget_plot.png Analysis/Analysis.html Analysis/Analysis.pdf
 
 # generate figures and objects for report
 data/dataset.csv: R/download_dataset.R

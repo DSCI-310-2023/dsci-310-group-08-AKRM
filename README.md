@@ -15,40 +15,49 @@ In the data set “TMDB 5000 Movie Dataset” (from "https://www.kaggle.com/data
 ### How to run container
 
  - To replicate the analysis, install
-[Docker](https://www.docker.com/get-started). Then `clone` this GitHub
-repository and `cd` into the directory. Then run the following command at the command line/terminal
+[Docker](https://www.docker.com/get-started). Then `clone` this GitHub repository
+
+```
+git clone https://github.com/rehan13/dsci-310-group-08-AKRM.git
+```
+
+- `cd` into the directory. Then run the following command at the command line/terminal
 from the root directory of this project:
 
+  - Option A (This takes longer time to build)
 ``` 
 docker build --tag akrm-env .
 ```
 
-Followed by:
-``` 
-docker run --rm -p 8787:8787 -v "${PWD}":/home/rstudio -e PASSWORD="apassword" akrm-env 
+  - Option B
+```
+docker pull rehan13/dsci-310-group-08-akrm:latest
 ```
 
-- To open Rstudio on the web browser `http://localhost:8787` and enter the username as `rstudio` and password as `apassword` 
+-  Followed by the command below to open the container below.
 
-- Navigate to the Analysis folder and then knit Analysis.Rmd
+``` 
+docker run --rm -p 8787:8787 -v /${PWD}:/home/rstudio -e PASSWORD="apassword" akrm-env 
+```
 
-- * alternate way to get the image: 
+- To open Rstudio on the web browser copy the url `http://localhost:8787` and open it on web browser. Enter `rstudio` as username and `apassword` as password. 
 
-- Run the following command in the terminal after you are in the project directory. `docker pull rehan13/dsci-310-group-08-akrm:latest`
-
-- In case there is a following complain `Warning: cannot open file 'R/eda.R': No such file or directoryError in file(filename, "r", encoding = encoding) : 
-  cannot open the connection go to `tools` > `global options` > `R Markdown` > and make sure Evaluate chunks in directory is set to `Project`
   
 ### Makefile instruction
 
-- To generate the analysis using makefile follows the below mentioned instruction:
+- Once the container is open go to the R terminal and type the following command
+```
+make clean
+```
+- Followed By 
+```
+make all
+```
 
-- open terminal on your computer and 
-- `cd` into the project directory 
-- Use`make clean`to clear out any unnecessary prexisting results.
-- Then type `make all` on the terminal.
-- After the analysis is generated open the container using the steps above.
+This will generate the analysis and all the necessary supporting files including downloading the raw data from the internet.
+
 - Then navigate into the `Analysis` folder and open `Analysis.html` on your default browser or `Analysis.pdf` on your pdf reader.
+
 - All the generated files will be located in `data` and `Results` folder.
 
 ### Dependencies
@@ -56,10 +65,11 @@ docker run --rm -p 8787:8787 -v "${PWD}":/home/rstudio -e PASSWORD="apassword" a
 - Base Image:- rocker/verse:4.2.2
 
 Packages -> Version
+- testthat -> 3.1.6
 - knitr  -> 1.42
 - ggplot2 -> 3.4.1
 - tidyverse  -> 2.0.0
-- docopt. -> 0.7.1
+- docopt -> 0.7.1
 - GGally  -> 2.1.2
 - tidymodels -> 1.0.0
 - infer  -> 1.0.4
@@ -67,7 +77,7 @@ Packages -> Version
 - rmarkdown  -> 2.20
 - here -> 1.0.1
 - markdown -> 1.5
-- bookdown. -> 0.33
+- bookdown -> 0.33
 - float -> 0.3-1 
 
 ### Licenses

@@ -8,7 +8,7 @@ set.seed(15)
 
 library(here)
 library(docopt)
-source(here("R/eda.R"))
+library(Movie)
 
 
 

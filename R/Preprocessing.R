@@ -9,9 +9,7 @@ Options:
 library(here)
 library(docopt)
 library(tidymodels)
-source(here("R/eda.R"))
-source(here("R/cp.R"))
-source(here("R/grapher.R"))
+library(Movie)
 
 set.seed(15)
 

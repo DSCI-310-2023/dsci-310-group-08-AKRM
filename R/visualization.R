@@ -12,9 +12,8 @@ library(here)
 library(tidymodels)
 library(GGally)
 library(docopt)
-source(here("R/eda.R"))
-source(here("R/cp.R"))
-source(here("R/grapher.R"))
+library(Movie)
+
 set.seed(15)
 
 opt <- docopt(doc)

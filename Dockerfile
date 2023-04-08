@@ -26,4 +26,5 @@ RUN R -e "remotes::install_version('markdown', version='1.5', repos = 'http://cr
 RUN R -e "remotes::install_version('bookdown', version='0.33', repos = 'http://cran.rstudio.com/')"
 RUN R -e "remotes::install_version('docopt', version='0.7.1', repos = 'http://cran.rstudio.com/')"
 RUN R -e "remotes::install_version('float', version='0.3-1', repos = 'http://cran.rstudio.com/')"
+RUN R -e "remotes::install_github('DSCI-310/dsci-310-group-08-pkg')"
 EXPOSE 8787
